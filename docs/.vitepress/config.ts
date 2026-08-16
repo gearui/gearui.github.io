@@ -2,14 +2,15 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 
 // Site structure
 //
-//   /                      English landing: the GearUI organisation and its products
+//   /                      English landing: GearUI Kit itself (the only product today)
 //   /gearui-kit/           product home for GearUI Kit
 //   /gearui-kit/guide/…    usage docs
 //   /zh-Hans/…             the same tree in Simplified Chinese
 //
-// One product today. Adding another is: a new folder under docs/ (and under
-// docs/zh-Hans/), a nav entry per locale, and a sidebar block keyed by its path
-// prefix below. Nothing else moves.
+// One product today, so the landing page IS the product page. When a second
+// product arrives: a new folder under docs/ (and docs/zh-Hans/), a nav entry per
+// locale, a sidebar block keyed by its path prefix, and the landing becomes an
+// index of products. Nothing else moves.
 
 const GITHUB_ORG = 'https://github.com/gearui'
 const KIT_REPO = `${GITHUB_ORG}/gearui-kit`
@@ -18,7 +19,7 @@ const KIT_VERSION = '1.0.0-beta1'
 // ---------------------------------------------------------------- English
 
 const enNav: DefaultTheme.NavItem[] = [
-  { text: 'GearUI Kit', link: '/gearui-kit/', activeMatch: '^/gearui-kit/' },
+  { text: 'Docs', link: '/gearui-kit/guide/getting-started', activeMatch: '^/gearui-kit/' },
   {
     text: KIT_VERSION,
     items: [
@@ -59,7 +60,7 @@ const enKitSidebar: DefaultTheme.SidebarItem[] = [
 // ---------------------------------------------------------------- 简体中文
 
 const zhNav: DefaultTheme.NavItem[] = [
-  { text: 'GearUI Kit', link: '/zh-Hans/gearui-kit/', activeMatch: '^/zh-Hans/gearui-kit/' },
+  { text: '文档', link: '/zh-Hans/gearui-kit/guide/getting-started', activeMatch: '^/zh-Hans/gearui-kit/' },
   {
     text: KIT_VERSION,
     items: [
@@ -101,7 +102,7 @@ const zhKitSidebar: DefaultTheme.SidebarItem[] = [
 
 export default defineConfig({
   title: 'GearUI',
-  description: 'Kotlin Multiplatform UI, one codebase for Android, iOS and Web.',
+  description: 'GearUI Kit — a Kotlin Multiplatform UI component library. One codebase for Android, iOS and Web.',
   cleanUrls: true,
   lastUpdated: true,
   sitemap: { hostname: 'https://gearui.com' },
