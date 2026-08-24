@@ -5,7 +5,7 @@
 | Android | ✅ | ✅ | ✅ |
 | iOS | ✅ | ✅ | ✅ |
 | Web (H5) | ✅ | ✅ 76 个演示中 75 个 | ✅ |
-| 鸿蒙 | ⚠️ 脚手架 | ⚠️ 脚手架 | — |
+| 鸿蒙 | ✅ | ✅ 可构建 | — |
 
 ## Android 与 iOS
 
@@ -21,4 +21,14 @@ Web 目标通过 KuiklyUI 的 web 渲染器（`core-render-web`）运行。sampl
 
 ## 鸿蒙
 
-只有脚手架，从未构建。它无法作为常规构建的一个 target：带 `ohosArm64` 的 KuiklyUI 产物是基于 Kotlin `2.0.21-KBA-010`（腾讯分支）发布的，所以 ohos 用一套并行构建配置，以 `-c settings.ohos.gradle.kts` 选择。哪些验证过、哪些没有，见 [`sample/ohosApp/README.md`](https://github.com/gearui/gearui-kit/blob/main/sample/ohosApp/README.zh-Hans.md)。
+已支持，且全链路可构建——Kotlin/Native → CMake NAPI 胶水 → ArkTS → 一个包含 `libshared.so` 与 `libkuikly_entry.so` 的可安装 HAP。
+
+它无法作为常规构建的一个 target：带 `ohosArm64` 的 KuiklyUI 产物是基于 Kotlin `2.0.21-KBA-010`（腾讯分支）发布的，所以 ohos 用一套并行构建配置：
+
+```bash
+./gradlew -c settings.ohos.gradle.kts :sample:linkSharedDebugSharedOhosArm64
+```
+
+HAP **尚未在真机或模拟器上启动过**，因此鸿蒙上关于 UI 的一切都未经验证。安装还需要模拟器镜像和已签名的包，两者都要华为开发者账号——调试 profile 必须列出目标设备的 UDID，所以必须先有模拟器。构建步骤与剩余项见 [`sample/ohosApp/README.zh-Hans.md`](https://github.com/gearui/gearui-kit/blob/main/sample/ohosApp/README.zh-Hans.md)。
+
+DevEco Studio 26.0 自带 SDK，无需经 SDK Manager 下载。

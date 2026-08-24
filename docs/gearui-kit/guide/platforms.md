@@ -5,7 +5,7 @@
 | Android | ✅ | ✅ | ✅ |
 | iOS | ✅ | ✅ | ✅ |
 | Web (H5) | ✅ | ✅ 75 of 76 demos | ✅ |
-| HarmonyOS | ⚠️ scaffolding | ⚠️ scaffolding | — |
+| HarmonyOS | ✅ | ✅ builds | — |
 
 ## Android and iOS
 
@@ -21,4 +21,14 @@ The host must not carry a UMD wrapper — the sample's `webpack.config.d/output.
 
 ## HarmonyOS
 
-Scaffolded, never built. It cannot be a target of the normal build: the KuiklyUI artifacts carrying `ohosArm64` are published against Kotlin `2.0.21-KBA-010` (a Tencent fork), so ohos uses a parallel build configuration selected with `-c settings.ohos.gradle.kts`. See [`sample/ohosApp/README.md`](https://github.com/gearui/gearui-kit/blob/main/sample/ohosApp/README.md) for what is and is not verified.
+Supported, and builds end to end — Kotlin/Native → CMake NAPI glue → ArkTS → an installable HAP carrying both `libshared.so` and `libkuikly_entry.so`.
+
+It cannot be a target of the normal build: the KuiklyUI artifacts carrying `ohosArm64` are published against Kotlin `2.0.21-KBA-010` (a Tencent fork), so ohos uses a parallel build configuration:
+
+```bash
+./gradlew -c settings.ohos.gradle.kts :sample:linkSharedDebugSharedOhosArm64
+```
+
+The HAP has **not been launched on a device or emulator yet**, so nothing about the UI is verified on HarmonyOS. Installing needs an emulator image and a signed package, both behind a Huawei developer account — the debug profile has to list the target's UDID, so the emulator must exist first. See [`sample/ohosApp/README.md`](https://github.com/gearui/gearui-kit/blob/main/sample/ohosApp/README.md) for the build steps and what remains.
+
+DevEco Studio 26.0 bundles the SDK, so there is nothing to fetch through SDK Manager.

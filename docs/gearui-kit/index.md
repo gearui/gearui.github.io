@@ -34,7 +34,7 @@ commonMain.dependencies {
 - **Design tokens with teeth** — colour, radius, elevation, spacing, border and icon size are named scales; CI rejects hardcoded literals in component code
 - **Runtime included** — `App` root wires theme, i18n, overlay host and a stabilised safe-area pipeline in one call
 - **i18n built in** — language packs resolved from a BCP 47 tag, domain-split so no class hits Android's DEX limits, and downstream libraries plug into the same pipeline
-- **Android · iOS · Web** — one `commonMain`; HarmonyOS is scaffolded, not yet built
+- **Android · iOS · Web · HarmonyOS** — one `commonMain`; HarmonyOS builds through a parallel configuration and is not yet verified on a device
 
 ## Screenshots
 
