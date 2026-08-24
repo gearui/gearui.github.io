@@ -37,4 +37,8 @@ pnpm sync:gearui-kit            # expects ../gearui-kit; or pass a path
 
 ## Domain
 
-`docs/public/CNAME` pins `gearui.com`. DNS points the apex at GitHub Pages' A records and `www` at `gearui.github.io`. Putting a CDN in front later is a DNS-only change; nothing in this repo cares.
+`docs/public/CNAME` pins `gearui.com` — that is the one that ends up in the
+deployed artifact and therefore the one that matters. GitHub also maintains a
+`CNAME` at the repository root when you set the custom domain in Pages
+settings; with an Actions deploy it is not used, so if the two ever disagree,
+`docs/public/CNAME` wins. DNS points the apex at GitHub Pages' A records and `www` at `gearui.github.io`. Putting a CDN in front later is a DNS-only change; nothing in this repo cares.
