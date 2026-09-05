@@ -8,7 +8,7 @@ GearUI Kit 是一个 Kotlin Multiplatform 库。往 `commonMain` 加一个依赖
 | --- | --- |
 | Kotlin | 2.1.21（必须与 KuiklyUI 一致） |
 | Compose Multiplatform | 1.7.3 |
-| KuiklyUI | 2.25.0（`compose:2.25.0-2.1.21`） |
+| KuiklyUI | 2.27.0（`compose:2.27.0-2.1.21`） |
 | Android | minSdk 21，compileSdk 34 |
 | iOS | 14.0+，arm64 / 模拟器 arm64 / x64 |
 | JS | 浏览器，IR |
