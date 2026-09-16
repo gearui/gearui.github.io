@@ -19,7 +19,8 @@ const KIT_VERSION = '1.0.0-beta1'
 // ---------------------------------------------------------------- English
 
 const enNav: DefaultTheme.NavItem[] = [
-  { text: 'Docs', link: '/gearui-kit/guide/getting-started', activeMatch: '^/gearui-kit/' },
+  { text: 'Docs', link: '/gearui-kit/guide/getting-started', activeMatch: '^/gearui-kit/(?!compare)' },
+  { text: 'Compare', link: '/gearui-kit/compare', activeMatch: '^/gearui-kit/compare' },
   {
     text: KIT_VERSION,
     items: [
@@ -34,6 +35,7 @@ const enKitSidebar: DefaultTheme.SidebarItem[] = [
     text: 'Introduction',
     items: [
       { text: 'What is GearUI Kit', link: '/gearui-kit/' },
+      { text: 'Compared with Flutter, RN and KMP', link: '/gearui-kit/compare' },
       { text: 'Getting started', link: '/gearui-kit/guide/getting-started' },
       { text: 'Platforms', link: '/gearui-kit/guide/platforms' },
     ],
@@ -60,7 +62,8 @@ const enKitSidebar: DefaultTheme.SidebarItem[] = [
 // ---------------------------------------------------------------- 简体中文
 
 const zhNav: DefaultTheme.NavItem[] = [
-  { text: '文档', link: '/zh-Hans/gearui-kit/guide/getting-started', activeMatch: '^/zh-Hans/gearui-kit/' },
+  { text: '文档', link: '/zh-Hans/gearui-kit/guide/getting-started', activeMatch: '^/zh-Hans/gearui-kit/(?!compare)' },
+  { text: '对比', link: '/zh-Hans/gearui-kit/compare', activeMatch: '^/zh-Hans/gearui-kit/compare' },
   {
     text: KIT_VERSION,
     items: [
@@ -75,6 +78,7 @@ const zhKitSidebar: DefaultTheme.SidebarItem[] = [
     text: '介绍',
     items: [
       { text: 'GearUI Kit 是什么', link: '/zh-Hans/gearui-kit/' },
+      { text: '与 Flutter、RN、KMP 对比', link: '/zh-Hans/gearui-kit/compare' },
       { text: '快速开始', link: '/zh-Hans/gearui-kit/guide/getting-started' },
       { text: '平台支持', link: '/zh-Hans/gearui-kit/guide/platforms' },
     ],
