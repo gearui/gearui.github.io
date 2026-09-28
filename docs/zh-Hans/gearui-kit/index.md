@@ -30,7 +30,7 @@ commonMain.dependencies {
 }
 ```
 
-- **72 个组件**，分 6 类——每一个在 sample 里都有演示页
+- **82 个组件**，分 6 类——每一个在 sample 里都有演示页
 - **有牙齿的设计 token**——颜色、圆角、阴影、间距、描边、图标尺寸都是具名标度；CI 拒绝组件代码里的硬编码字面量
 - **运行时内置**——`App` 根节点一次调用接好主题、i18n、浮层宿主与稳定化的安全区管线
 - **i18n 内置**——按 BCP 47 语言标签解析语言包，按域拆分不撞 Android DEX 上限，下游库接同一条管线
@@ -48,8 +48,8 @@ commonMain.dependencies {
 | 性能 | ✅ 首屏 122ms vs 原生 125ms · SDK 300KB / 1.2MB ¹ | Skiko | 引擎，MB 级 | JS 引擎 + bundle |
 | 平台调试工具 | ✅ 每个视图可见、可归因；Android 上就是原生天花板 | Android 可见，iOS 黑盒 | 黑盒 FlutterView，只能 DevTools | 可见，但要对两条栈 |
 | 语言 | Kotlin，与 Android 团队和 JVM 后端共享 | Kotlin | Dart | JS / TS |
-| 默认视觉 | ✅ iOS 26 基线，四端一致，72 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
-| 设计一致性 | ✅ Token 由 23 条 CI 护栏强制 | 无 | 可主题化，不强制 | 无 |
+| 默认视觉 | ✅ HeroUI Native 打底 + iOS 26 平台控件，四端一致，82 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
+| 设计一致性 | ✅ Token 由 22 项 CI 检查强制 | 无 | 可主题化，不强制 | 无 |
 | HarmonyOS | ✅ 官方目标平台 | 无 | 社区分支 | 华为维护的分支 |
 | 生态与成熟度 | 小 · beta5（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
 
@@ -57,7 +57,7 @@ commonMain.dependencies {
 
 ## 截图
 
-在 iPhone 17 Pro 模拟器上运行 sample 截取。语言与主题都在设置页运行时切换，所有组件自动跟随。
+在 iPhone 17 Pro Max 模拟器（iOS 26.2）上运行 sample 截取。语言与主题都在设置页运行时切换，所有组件自动跟随。
 
 <div class="kit-shots">
   <figure><img src="/gearui-kit/home-zh.png" alt="中文组件索引" /><figcaption>首页 · 中文</figcaption></figure>

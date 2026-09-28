@@ -19,8 +19,8 @@ Two rules for reading it. First, it compares **stack to stack**: Flutter is a la
 | Performance | ✅ First screen 122 ms vs native 125 ms · SDK 300 KB / 1.2 MB ¹ | Skiko | Engine, MB-scale | JS engine + bundle |
 | Platform debugging tools | ✅ Every view visible and attributable; on Android, the native ceiling | Visible on Android, opaque on iOS | Opaque FlutterView; DevTools only | Visible; two stacks to correlate |
 | Language | Kotlin, shared with the Android team and a JVM backend | Kotlin | Dart | JS / TS |
-| Default look | ✅ iOS 26 baseline on every platform, 72 components | Material 3 | Material; Cupertino is second-class | None |
-| Design consistency | ✅ Tokens enforced by 23 CI guards | None | Themeable, not enforced | None |
+| Default look | ✅ HeroUI Native floor + iOS 26 platform controls, 82 components | Material 3 | Material; Cupertino is second-class | None |
+| Design consistency | ✅ Tokens enforced by 22 CI checks | None | Themeable, not enforced | None |
 | HarmonyOS | ✅ First-class target | No | Community fork | Huawei-maintained fork |
 | Ecosystem and maturity | Small · beta5 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
 
@@ -60,10 +60,10 @@ KuiklyUI is a renderer. It does not ship a component library that looks like a f
 
 | Pain point | Flutter / React Native / Compose MP | GearUI Kit |
 |---|---|---|
-| Looks like iOS by default | Flutter defaults to Material and its Cupertino set is a painted, incomplete imitation; React Native ships nothing; Compose MP is Material 3 | iOS 26 baseline, one design language on every platform, 72 components — [decided in the spec](https://github.com/gearui/gearui-kit/blob/main/docs/DESIGN_SYSTEM_SPEC.md) |
-| Still looks like one product after ten people have committed for six months | Discipline | Six token scales and **23 CI guards**: literals are rejected in component code, a radius can only come from the scale — [the guards](https://github.com/gearui/gearui-kit/tree/main/scripts/ci) |
+| Looks like iOS by default | Flutter defaults to Material and its Cupertino set is a painted, incomplete imitation; React Native ships nothing; Compose MP is Material 3 | HeroUI Native as the floor, iOS 26 for platform-signature controls (switch, list rows, grouped cards, separators — measured on the simulator), one design language on every platform, 82 components. Every control value records which reference it follows and why — [the rule](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#2-where-values-come-from), [the per-token table](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.md) |
+| Still looks like one product after ten people have committed for six months | Discipline | Six token scales, **20 guard scripts** and a provenance check: literals are rejected in component code, a radius can only come from the scale — [the guards](https://github.com/gearui/gearui-kit/tree/main/scripts/ci) |
 | Icons | Font glyphs, or each app imports its own | Phosphor shipped as image assets under Phosphor's own names, not a font |
-| Platform effects such as frosted glass | Each app on its own | A material layer with a **degradation rule**: where blur cannot run, the surface goes opaque rather than leaving a translucent wash over arbitrary content. We also [document where the renderer's blur falls short](https://github.com/gearui/gearui-kit/blob/main/docs/UPSTREAM_KUIKLYUI_BLUR.md) — publishing our own dependency's gaps is part of being believed |
+| Platform effects such as frosted glass | Each app on its own | A material layer with a **degradation rule**: where blur cannot run, the surface goes opaque rather than leaving a translucent wash over arbitrary content. We also [document where the renderer's blur falls short](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#5-shadows-borders-and-materials) — publishing our own dependency's gaps is part of being believed |
 
 ### Runtime plumbing
 
@@ -128,7 +128,16 @@ The stack's position is simple: **the renderer measures within a few millisecond
 
 Two things this table is careful about. The 6× is against React Native's HarmonyOS port, which is younger than the React Native you know on iOS and Android; dropping that qualifier would be misleading. And the frame-rate row does not say Flutter drops frames — Impeller is genuinely fast. Flutter's costs are startup, size, memory and system integration, not 60 fps.
 
-**These are KuiklyUI's numbers, not GearUI Kit's.** Our layer is not free. The one number we have measured ourselves: tab switching under our TabHost keep-alive runs at 4.0 % janky frames (`gfxinfo`, Android, 1440×3200) — down from 40.4 % before the fix, which was our layer's cost and nobody else's. The first person to profile a GearUI page in Instruments will verify this for us; we would rather they found it true.
+**These are KuiklyUI's numbers, not GearUI Kit's.** Our layer is not free, so we measure it ourselves, on the kit's own components, with the sample's Performance page and the scripts in [`scripts/perf/`](https://github.com/gearui/gearui-kit/tree/main/scripts/perf). Android: Xiaomi 12 Pro, Android 16, 120 Hz, a release (non-debuggable) build, 2026-09-28.
+
+| GearUI Kit measure | Result | Budget |
+|---|---|---|
+| Cold start to the home component list drawn (process start → first frame), 5 runs | median **310 ms** | ≤ 1200 ms |
+| Theme switch, the whole app, ~200 components on screen, 20 flips | median **36.9 ms**, p90 44.5 | ≤ 120 ms |
+| 1000-row `List` of real `Cell`s flung for 5 s (`dumpsys gfxinfo`) | janky **0.20 %**, p99 11 ms | < 3 % |
+| Tab switching under TabHost keep-alive (`gfxinfo`, 1440×3200) | janky **4.0 %**, down from 40.4 % before the fix | — |
+
+iOS so far has simulator numbers only — theme switch 36.8 ms, scroll 0.0 % janky; cold start reads 1030 ms, but 764 ms of it is before the Kotlin page exists, so it waits for a device pass before it counts. A debuggable build is about five times slower to start; never judge the kit by one. [Method and raw results](https://github.com/gearui/gearui-kit/blob/main/docs/QUALITY_STATUS.md).
 
 ## Where Flutter and React Native are ahead
 
@@ -155,7 +164,8 @@ Two things this table is careful about. The 6× is against React Native's Harmon
 - [KuiklyUI — architecture](https://kuikly.tds.qq.com/Introduction/arch.html)
 - [Tencent: Kuikly HarmonyOS release — performance](https://news.qq.com/rain/a/20250603A05YV000) — 6× vs RN, first screen, charts
 - [Flutter — Platform views on Android](https://docs.flutter.dev/platform-integration/android/platform-views) · [on iOS](https://docs.flutter.dev/platform-integration/ios/platform-views)
-- [GearUI Kit — design system specification](https://github.com/gearui/gearui-kit/blob/main/docs/DESIGN_SYSTEM_SPEC.md)
+- [GearUI Kit — visual specification](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md) · [design system](https://github.com/gearui/gearui-kit/blob/main/docs/DESIGN_SYSTEM.md)
 - [GearUI Kit — CI guards](https://github.com/gearui/gearui-kit/tree/main/scripts/ci)
-- [GearUI Kit — where KuiklyUI's blur falls short](https://github.com/gearui/gearui-kit/blob/main/docs/UPSTREAM_KUIKLYUI_BLUR.md)
-- [GearUI Kit — iOS 26 parity audit](https://github.com/gearui/gearui-kit/blob/main/docs/IOS26_PARITY_AUDIT.md)
+- [GearUI Kit — where KuiklyUI's blur falls short](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#5-shadows-borders-and-materials)
+- [GearUI Kit — component metrics: every control value against HeroUI Native and iOS](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.md)
+- [GearUI Kit — quality status and performance measurements](https://github.com/gearui/gearui-kit/blob/main/docs/QUALITY_STATUS.md)

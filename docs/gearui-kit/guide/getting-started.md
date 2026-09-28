@@ -8,8 +8,8 @@ GearUI Kit is a Kotlin Multiplatform library. You add one dependency to `commonM
 | --- | --- |
 | Kotlin | 2.1.21 (must match KuiklyUI's) |
 | Compose Multiplatform | 1.7.3 |
-| KuiklyUI | 2.27.0 (`compose:2.27.0-2.1.21`) |
-| Android | minSdk 21, compileSdk 34 |
+| KuiklyUI | 2.28.0 (`compose:2.28.0-2.1.21`) |
+| Android | minSdk 21, compileSdk 36 |
 | iOS | 14.0+, arm64 / simulator arm64 / x64 |
 | JS | browser, IR |
 
@@ -116,5 +116,6 @@ git clone https://github.com/gearui/gearui-kit
 cd gearui-kit
 ./gradlew :sample:installDebug                    # Android
 ./gradlew :sample:jsApp:jsBrowserDevelopmentRun   # Web → http://localhost:8081/
-open sample/iosApp/GearUISample.xcworkspace       # iOS (after ./gradlew :sample:syncFramework && pod install)
+./gradlew :sample:generateDummyFramework && (cd sample/iosApp && pod install)   # iOS, once
+open sample/iosApp/GearUISample.xcworkspace       # then build the GearUISample scheme
 ```

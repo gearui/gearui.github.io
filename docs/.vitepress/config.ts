@@ -52,8 +52,10 @@ const enKitSidebar: DefaultTheme.SidebarItem[] = [
   {
     text: 'Reference',
     items: [
-      { text: 'Design specification', link: `${KIT_REPO}/blob/main/docs/GEARUI_SPEC_2026.md` },
-      { text: 'Architecture guardrails', link: `${KIT_REPO}/blob/main/docs/ARCHITECTURE_GUARDRAILS.md` },
+      { text: 'Visual specification', link: `${KIT_REPO}/blob/main/docs/VISUAL_SPEC.md` },
+      { text: 'Component metrics', link: `${KIT_REPO}/blob/main/docs/COMPONENT_METRICS.md` },
+      { text: 'Quality gates', link: `${KIT_REPO}/blob/main/docs/COMPONENT_SPEC.md#8-executable-quality-gates` },
+      { text: 'Quality & performance', link: `${KIT_REPO}/blob/main/docs/QUALITY_STATUS.md` },
       { text: 'Sample app', link: `${KIT_REPO}/tree/main/sample` },
     ],
   },
@@ -95,8 +97,10 @@ const zhKitSidebar: DefaultTheme.SidebarItem[] = [
   {
     text: '参考',
     items: [
-      { text: '设计规范', link: `${KIT_REPO}/blob/main/docs/GEARUI_SPEC_2026.md` },
-      { text: '架构护栏', link: `${KIT_REPO}/blob/main/docs/ARCHITECTURE_GUARDRAILS.md` },
+      { text: '视觉规范', link: `${KIT_REPO}/blob/main/docs/VISUAL_SPEC.zh-Hans.md` },
+      { text: '组件度量', link: `${KIT_REPO}/blob/main/docs/COMPONENT_METRICS.zh-Hans.md` },
+      { text: '质量门禁', link: `${KIT_REPO}/blob/main/docs/COMPONENT_SPEC.zh-Hans.md#8-可执行质量门禁` },
+      { text: '质量与性能', link: `${KIT_REPO}/blob/main/docs/QUALITY_STATUS.zh-Hans.md` },
       { text: 'Sample 应用', link: `${KIT_REPO}/tree/main/sample` },
     ],
   },

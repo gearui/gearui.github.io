@@ -19,8 +19,8 @@ titleTemplate: GearUI Kit
 | 性能 | ✅ 首屏 122ms vs 原生 125ms · SDK 300KB / 1.2MB ¹ | Skiko | 引擎，MB 级 | JS 引擎 + bundle |
 | 平台调试工具 | ✅ 每个视图可见、可归因；Android 上就是原生天花板 | Android 可见，iOS 黑盒 | 黑盒 FlutterView，只能 DevTools | 可见，但要对两条栈 |
 | 语言 | Kotlin，与 Android 团队和 JVM 后端共享 | Kotlin | Dart | JS / TS |
-| 默认视觉 | ✅ iOS 26 基线，四端一致，72 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
-| 设计一致性 | ✅ Token 由 23 条 CI 护栏强制 | 无 | 可主题化，不强制 | 无 |
+| 默认视觉 | ✅ HeroUI Native 打底 + iOS 26 平台控件，四端一致，82 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
+| 设计一致性 | ✅ Token 由 22 项 CI 检查强制 | 无 | 可主题化，不强制 | 无 |
 | HarmonyOS | ✅ 官方目标平台 | 无 | 社区分支 | 华为维护的分支 |
 | 生态与成熟度 | 小 · beta5（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
 
@@ -60,10 +60,10 @@ KuiklyUI 是渲染器。它不提供一个第一天就像成品的组件库，�
 
 | 痛点 | Flutter / React Native / Compose MP | GearUI Kit |
 |---|---|---|
-| 默认就像 iOS | Flutter 默认 Material，Cupertino 是画出来的、不完整的仿品；React Native 什么都不给；Compose MP 是 Material 3 | iOS 26 基线，四端一套设计语言，72 个组件——[规范里定的](https://github.com/gearui/gearui-kit/blob/main/docs/DESIGN_SYSTEM_SPEC.md) |
-| 十个人提交半年后还像一个产品 | 靠自觉 | 六条 token 标度和 **23 条 CI 护栏**：组件代码里禁字面量，圆角只能来自标度——[护栏本身](https://github.com/gearui/gearui-kit/tree/main/scripts/ci) |
+| 默认就像 iOS | Flutter 默认 Material，Cupertino 是画出来的、不完整的仿品；React Native 什么都不给；Compose MP 是 Material 3 | HeroUI Native 是底线，平台标志性控件（开关、列表行、分组卡片、分隔线）取 iOS 26 模拟器实测值，四端一套设计语言，82 个组件。每个控件数值都记录了取自哪一方、为什么——[取值规则](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#2-数值来源)、[逐 token 对照表](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md) |
+| 十个人提交半年后还像一个产品 | 靠自觉 | 六条 token 标度、**20 个护栏脚本**加一项来源校验：组件代码里禁字面量，圆角只能来自标度——[护栏本身](https://github.com/gearui/gearui-kit/tree/main/scripts/ci) |
 | 图标 | 字体 glyph，或各 App 自己导入 | Phosphor 以图片资源内置，沿用 Phosphor 的命名，不是字体 |
-| 毛玻璃这类平台效果 | 各 App 自己做 | 材质层带**降级规则**：模糊跑不了的地方退成不透明面，绝不在任意内容上留一层半透明烂片。我们还[公开了渲染器模糊能力的缺口](https://github.com/gearui/gearui-kit/blob/main/docs/UPSTREAM_KUIKLYUI_BLUR.md)——把自己依赖层的缺口公开，是被信任的一部分 |
+| 毛玻璃这类平台效果 | 各 App 自己做 | 材质层带**降级规则**：模糊跑不了的地方退成不透明面，绝不在任意内容上留一层半透明烂片。我们还[公开了渲染器模糊能力的缺口](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#5-阴影边框与材质)——把自己依赖层的缺口公开，是被信任的一部分 |
 
 ### 运行时管线
 
@@ -128,7 +128,16 @@ KuiklyUI 是渲染器。它不提供一个第一天就像成品的组件库，�
 
 这张表小心了两件事。「6 倍」比的是 React Native 的鸿蒙分支，它比你在 iOS 和 Android 上熟悉的那个 RN 年轻得多；去掉这个限定就是误导。帧率那一行没写 Flutter 掉帧——Impeller 是真的快。Flutter 的代价在启动、体积、内存和系统集成，不在 60fps。
 
-**这些是 KuiklyUI 的数字，不是 GearUI Kit 的。** 我们这一层不是免费的。我们自己量过的唯一一个数：TabHost 保活下的页签切换卡帧率 4.0%（`gfxinfo`，Android，1440×3200）——修之前是 40.4%，那是我们这一层的成本，与别人无关。第一个用 Instruments 剖析 GearUI 页面的人会替我们验证；我们希望他验出来是真的。
+**这些是 KuiklyUI 的数字，不是 GearUI Kit 的。** 我们这一层不是免费的，所以自己量：用 kit 自己的组件、sample 的性能页和 [`scripts/perf/`](https://github.com/gearui/gearui-kit/tree/main/scripts/perf) 里的脚本。Android：小米 12 Pro，Android 16，120Hz，release（不可调试）构建，2026-09-28。
+
+| GearUI Kit 指标 | 结果 | 预算 |
+|---|---|---|
+| 冷启动到首页组件列表画出（进程启动 → 首帧），5 次 | 中位数 **310ms** | ≤ 1200ms |
+| 整个 App 切换深浅色，页面约 200 个组件，连切 20 次 | 中位数 **36.9ms**，p90 44.5 | ≤ 120ms |
+| 1000 行真实 `Cell` 的 `List` 快速滑动 5 秒（`dumpsys gfxinfo`） | 卡帧 **0.20%**，p99 11ms | < 3% |
+| TabHost 保活下的页签切换（`gfxinfo`，1440×3200） | 卡帧 **4.0%**，修之前 40.4% | — |
+
+iOS 目前只有模拟器数据——主题切换 36.8ms，滚动卡帧 0.0%；冷启动读数 1030ms，但其中 764ms 发生在 Kotlin 页面创建之前，要等真机测过才计入预算。可调试构建的启动慢约五倍，别拿它评判 kit。[测量方法与原始结果](https://github.com/gearui/gearui-kit/blob/main/docs/QUALITY_STATUS.zh-Hans.md)。
 
 ## Flutter 和 React Native 领先的地方
 
@@ -155,7 +164,8 @@ KuiklyUI 是渲染器。它不提供一个第一天就像成品的组件库，�
 - [KuiklyUI — 架构](https://kuikly.tds.qq.com/Introduction/arch.html)
 - [腾讯：Kuikly 鸿蒙版开源——性能](https://news.qq.com/rain/a/20250603A05YV000)——6× vs RN、首屏、图表
 - [Flutter — Android 平台视图](https://docs.flutter.dev/platform-integration/android/platform-views) · [iOS](https://docs.flutter.dev/platform-integration/ios/platform-views)
-- [GearUI Kit — 设计系统规范](https://github.com/gearui/gearui-kit/blob/main/docs/DESIGN_SYSTEM_SPEC.md)
+- [GearUI Kit — 视觉规范](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md) · [设计系统](https://github.com/gearui/gearui-kit/blob/main/docs/DESIGN_SYSTEM.zh-Hans.md)
 - [GearUI Kit — CI 护栏](https://github.com/gearui/gearui-kit/tree/main/scripts/ci)
-- [GearUI Kit — KuiklyUI 模糊能力的缺口](https://github.com/gearui/gearui-kit/blob/main/docs/UPSTREAM_KUIKLYUI_BLUR.md)
-- [GearUI Kit — iOS 26 对齐审计](https://github.com/gearui/gearui-kit/blob/main/docs/IOS26_PARITY_AUDIT.md)
+- [GearUI Kit — KuiklyUI 模糊能力的缺口](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md)
+- [GearUI Kit — 组件度量：每个控件数值对照 HeroUI Native 与 iOS](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md)
+- [GearUI Kit — 质量状态与性能实测](https://github.com/gearui/gearui-kit/blob/main/docs/QUALITY_STATUS.zh-Hans.md)

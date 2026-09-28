@@ -30,7 +30,7 @@ commonMain.dependencies {
 }
 ```
 
-- **72 components** in 6 categories — every one has a demo page in the sample app
+- **82 components** in 6 categories — every one has a demo page in the sample app
 - **Design tokens with teeth** — colour, radius, elevation, spacing, border and icon size are named scales; CI rejects hardcoded literals in component code
 - **Runtime included** — `App` root wires theme, i18n, overlay host and a stabilised safe-area pipeline in one call
 - **i18n built in** — language packs resolved from a BCP 47 tag, domain-split so no class hits Android's DEX limits, and downstream libraries plug into the same pipeline
@@ -48,8 +48,8 @@ Nobody has heard of GearUI Kit. Everybody has shipped with at least one of the c
 | Performance | ✅ First screen 122 ms vs native 125 ms · SDK 300 KB / 1.2 MB ¹ | Skiko | Engine, MB-scale | JS engine + bundle |
 | Platform debugging tools | ✅ Every view visible and attributable; on Android, the native ceiling | Visible on Android, opaque on iOS | Opaque FlutterView; DevTools only | Visible; two stacks to correlate |
 | Language | Kotlin, shared with the Android team and a JVM backend | Kotlin | Dart | JS / TS |
-| Default look | ✅ iOS 26 baseline on every platform, 72 components | Material 3 | Material; Cupertino is second-class | None |
-| Design consistency | ✅ Tokens enforced by 23 CI guards | None | Themeable, not enforced | None |
+| Default look | ✅ HeroUI Native floor + iOS 26 platform controls, 82 components | Material 3 | Material; Cupertino is second-class | None |
+| Design consistency | ✅ Tokens enforced by 22 CI checks | None | Themeable, not enforced | None |
 | HarmonyOS | ✅ First-class target | No | Community fork | Huawei-maintained fork |
 | Ecosystem and maturity | Small · beta5 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
 
@@ -57,7 +57,7 @@ Nobody has heard of GearUI Kit. Everybody has shipped with at least one of the c
 
 ## Screenshots
 
-Captured from the sample app on an iPhone 17 Pro simulator. Language and theme are switched at runtime from the settings page; every component follows.
+Captured from the sample app on an iPhone 17 Pro Max simulator (iOS 26.2). Language and theme are switched at runtime from the settings page; every component follows.
 
 <div class="kit-shots">
   <figure><img src="/gearui-kit/home-zh.png" alt="Component index, Chinese" /><figcaption>Home · 中文</figcaption></figure>

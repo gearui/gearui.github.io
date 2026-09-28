@@ -1,6 +1,16 @@
 # 主题与 Token
 
-GearUI Kit 是**边框优先、token 驱动**的。组件自身不携带任何颜色或尺寸；它们从具名标度里读值，而库的 CI 会让任何写字面量的组件失败。这就是为什么改一次主题所有页面同时换皮，也是为什么四十个组件不会漂成四十种略微不同的圆角。
+GearUI Kit 是 **token 驱动**的：**HeroUI Native 是底线，平台说了算的地方跟 iOS**。组件自身不携带任何颜色或尺寸；它们从具名标度里读值，而库的 CI 会让任何写字面量的组件失败。这就是为什么改一次主题所有页面同时换皮，也是为什么四十个组件不会漂成四十种略微不同的圆角。
+
+## 数值从哪里来
+
+每个控件数值都遵循一条写明的规则：
+
+- **控件内部**——按钮、输入框、Tabs、菜单、对话框卡片、Popover、圆角标度——取 HeroUI Native。
+- **平台标志性控件与列表节奏**——开关、列表行高、分组卡片、分隔线——取当前 iOS 版本，在模拟器上实测而不是凭记忆（目前是 iOS 26.2：开关 63×28、行高 52pt、卡片内缩 20pt）。
+- **两边都没有**——GearUI 自定，并写明理由。
+
+每个控件 token 都在源文件里记录这个决定：两边的参考值、选了哪边、为什么。CI 会拒绝数值偏离所选来源的 token，也拒绝没有来源的新 token。完整对照表见 [COMPONENT_METRICS.zh-Hans.md](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md)；规则本身见 [VISUAL_SPEC.zh-Hans.md §2](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#2-数值来源)。
 
 ## 颜色——`Theme.colors`
 
@@ -11,14 +21,15 @@ GearUI Kit 是**边框优先、token 驱动**的。组件自身不携带任何�
 | 表面 | `background` `foreground` `surface` `surfaceForeground` `card` `cardForeground` `popover` `popoverForeground` `muted` `mutedForeground` |
 | 品牌 | `primary` `primaryForeground` `secondary` `secondaryForeground` `accent` `accentForeground` |
 | 状态 | `destructive` `success` `warning` `info`——各带一个 `…Foreground` |
-| 结构 | `border` `input` `ring` |
+| 柔和状态 | `primarySoft` `successSoft` `warningSoft` `destructiveSoft`——浅色填充，各带一个 `…Foreground` |
+| 结构 | `border` `input` `ring` `separator` `separatorSecondary` `segment` |
 
 每个 `X` 都配一个保证在它之上可读的 `XForeground`。实心 `primary` 按钮上的文字是 `primaryForeground`，不是「白色」。
 
 ```kotlin
 val colors = Theme.colors           // 永远是组件的第一行
 Text(text, color = colors.mutedForeground)
-Box(Modifier.background(colors.surface).border(BorderWidth.thin, colors.border))
+Box(Modifier.background(colors.surface).border(BorderWidth.hairline, colors.separator))
 ```
 
 ### 模式与自定义主题
@@ -28,7 +39,23 @@ App(themeMode = ThemeMode.System, isSystemDark = isSystemDark) { … }   // Ligh
 App(themeMode = ThemeMode.Dark, theme = MyThemes.DarkPurple) { … }    // 你自己的 ThemeSpec
 ```
 
-`ThemeSpec` 是包着 `Colors` 的 data class；内置的是 `Themes.Light` 与 `Themes.Dark`。sample 带了一个 `DarkPurple` 示范自定义主题长什么样。中性灰是纯中性（R = G = B）；旧的带蓝味 zinc 灰阶已经移除。
+`ThemeSpec` 是包着 `Colors` 的 data class；内置的是 `Themes.Light` 与 `Themes.Dark`。sample 带了一个 `DarkPurple` 示范自定义主题长什么样。中性灰是纯中性（R = G = B）。
+
+### 相互独立的轴
+
+品牌色、形状、字体、阴影、动效与深浅色是各自独立的轴，都传给 `App`。改其中一条不会重置另一条：
+
+```kotlin
+App(
+    themeMode = ThemeMode.System,
+    isSystemDark = isSystemDark,
+    theme = Themes.Light.withBrandAccent(Color(0xFF7C3AED)),   // 只换品牌色
+    shapes = myShapes,                                        // 圆角或直角预设
+    typography = myTypography,
+) { … }
+```
+
+`withBrandAccent` 替换 `primary`、它的前景色、柔和的 `primarySoft` 一对和焦点环，表面、形状、字体都不动。
 
 ## 六条标度
 
@@ -44,19 +71,23 @@ App(themeMode = ThemeMode.Dark, theme = MyThemes.DarkPurple) { … }    // 你�
 
 `md`（12dp）是最常用的一档。
 
-### 圆角——`Theme.shapes.*` / `Radius.*`
+### 圆角——`Theme.shapes.*`
 
-六档。`Theme.shapes` 给 `Shape` 实例用于 `Modifier.clip`；`Radius` 给同样的值的 `Dp` 形式用于 token 代码。两者不可能不一致。
+采用 HeroUI Native 的标度。`Theme.shapes` 给 `Shape` 实例用于 `Modifier.clip`；它是一条主题轴，品牌可以整体换成直角预设而不动组件。
 
-| `none` | `sm` | `md` | `lg` | `xl` | `full` |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 4 | 6 | 8 | 12 | 9999（胶囊） |
+| `none` | `sm` | `md` | `lg` | `controlLarge` | `xl` | `full` |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 | 8 | 12 | 14 | 16 | 24 | 9999（胶囊） |
 
-输入框与默认表面在 `md`；按钮与卡片在 `lg`；底部面板在 `xl`。离档值吸附到最近一档——标度不增长。
+小控件与标签在 `sm`；输入框在 `md`；按钮与卡片在 `lg`；大号控件在 `controlLarge`；对话框与浮层表面在 `xl`。本身就是胶囊形的按钮和 Tabs 用 `full`。
+
+::: warning `Radius.*` 已过时
+`Radius` 对象仍是 beta5 之前的数值（4 / 6 / 8 / 12）。圆角请从 `Theme.shapes` 读；`Radius` 会在下一个 beta 对齐。
+:::
 
 ### 阴影——`Elevation.*`
 
-GearUI 边框优先：**平贴在页面上的东西不投影。** 卡片、单元格、输入框用 `colors.border` 区分层次。阴影的意思是「这个浮在页面之上」，所以只有浮层类组件用。
+表面扁平、内容优先：层次来自 token 化的阴影与分隔线，而不是边框装饰。输入框默认无边框、带一层柔和的输入框阴影（放在白色卡片上时用填充变体）；分组列表用从文字处起始的 `separator` 分隔线分隔各行，和 iOS 一致。明显的阴影意味着「这个浮在页面之上」，所以只有浮层使用下面这几档。
 
 | `none` | `raised` | `floating` | `modal` |
 | --- | --- | --- | --- |
@@ -74,7 +105,7 @@ GearUI 边框优先：**平贴在页面上的东西不投影。** 卡片、单�
 | --- | --- | --- | --- |
 | 0 | 0.5 | 1 | 2 |
 
-`thin` 是输入框族的默认。刻意**没有焦点态档位**：焦点时变粗的边框会改变内容盒尺寸、导致布局跳动。
+`hairline` 用于 `Card` 这类描边表面的轮廓。刻意**没有焦点态档位**：焦点时变粗的边框会改变内容盒尺寸、导致布局跳动。
 
 ### 图标尺寸——`IconSizes.*`
 
@@ -84,13 +115,13 @@ GearUI 边框优先：**平贴在页面上的东西不投影。** 卡片、单�
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 12 | 14 | 16 | 18 | 24 |  | 28 | 36 | 40 |
 
-### 字体——`Typography.*`
+### 字体——`Theme.typography.*`
 
-语义文本样式：`DisplayLarge`… `HeadlineMedium`… `TitleSmall`… `BodyMedium`（最常用，14sp/22sp）、`MarkMedium`（加粗正文）、`LinkMedium`、`Caption`、`Label`。永远不在 `Text` 上设 `fontSize`；选一个样式。
+语义文本样式：`displayLarge`… `headlineMedium`… `titleSmall`… `bodyMedium`（最常用：Android 与 iOS 上 17/22，即 iOS 正文字号；Web 上 15/23）、`markMedium`（加粗正文）、`linkMedium`、`caption`、`label`。永远不在 `Text` 上设 `fontSize`；选一个样式。
 
 ## 护栏检查什么
 
-仓库每次 push 跑 18 条检查。对使用者有意义的是这几条，因为它们定义了什么叫「正确地使用 GearUI」：
+仓库每次 push 跑 20 个护栏脚本，另加两项检查：生成的 token 和组件度量表必须是最新的。对使用者有意义的是这几条，因为它们定义了什么叫「正确地使用 GearUI」：
 
 - 组件代码里没有 `Color(0x…)`
 - `RoundedCornerShape(...)`、`.border(...)`、`elevation = ...`、图标 `size = ...` 里没有字面量 `dp`

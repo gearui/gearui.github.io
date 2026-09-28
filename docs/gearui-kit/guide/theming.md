@@ -1,6 +1,16 @@
 # Theming & tokens
 
-GearUI Kit is **border-first and token-driven**. Components never carry a colour or a size of their own; they read named values from scales, and the library's CI fails any component that writes a literal instead. That is what makes a theme change re-skin every screen at once, and what keeps forty components from drifting into forty slightly different corner radii.
+GearUI Kit is **token-driven, with HeroUI Native as the floor and iOS where the platform decides**. Components never carry a colour or a size of their own; they read named values from scales, and the library's CI fails any component that writes a literal instead. That is what makes a theme change re-skin every screen at once, and what keeps forty components from drifting into forty slightly different corner radii.
+
+## Where the values come from
+
+Every control value follows one written rule:
+
+- **Inside a control** — button, field, tabs, menu, dialog card, popover, the radius scale — HeroUI Native.
+- **Platform-signature controls and list rhythm** — switch, list row height, grouped cards, separators — the current iOS release, measured on the simulator rather than remembered (iOS 26.2 today: a 63×28 switch, 52pt rows, 20pt card inset).
+- **Neither has a value** — GearUI's own, with the reason written down.
+
+Each control token carries that decision in its source: both reference values, the side chosen and why. CI rejects a token whose value drifts from its chosen side, and a new token without a source. The full table is [COMPONENT_METRICS.md](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.md); the rule itself is [VISUAL_SPEC.md §2](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#2-where-values-come-from).
 
 ## Colours — `Theme.colors`
 
@@ -11,14 +21,15 @@ GearUI Kit is **border-first and token-driven**. Components never carry a colour
 | Surfaces | `background` `foreground` `surface` `surfaceForeground` `card` `cardForeground` `popover` `popoverForeground` `muted` `mutedForeground` |
 | Brand | `primary` `primaryForeground` `secondary` `secondaryForeground` `accent` `accentForeground` |
 | Status | `destructive` `success` `warning` `info` — each with a `…Foreground` |
-| Structure | `border` `input` `ring` |
+| Soft status | `primarySoft` `successSoft` `warningSoft` `destructiveSoft` — tinted fills, each with a `…Foreground` |
+| Structure | `border` `input` `ring` `separator` `separatorSecondary` `segment` |
 
 Every `X` has an `XForeground` that is guaranteed readable on top of it. Text on a filled `primary` button is `primaryForeground`, not "white".
 
 ```kotlin
 val colors = Theme.colors           // always the first line of a component
 Text(text, color = colors.mutedForeground)
-Box(Modifier.background(colors.surface).border(BorderWidth.thin, colors.border))
+Box(Modifier.background(colors.surface).border(BorderWidth.hairline, colors.separator))
 ```
 
 ### Modes and custom themes
@@ -28,7 +39,23 @@ App(themeMode = ThemeMode.System, isSystemDark = isSystemDark) { … }   // Ligh
 App(themeMode = ThemeMode.Dark, theme = MyThemes.DarkPurple) { … }    // your own ThemeSpec
 ```
 
-`ThemeSpec` is a data class over `Colors`; the built-ins are `Themes.Light` and `Themes.Dark`. The sample ships a `DarkPurple` to show the shape of a custom one. Neutral greys are truly neutral (R = G = B); the old blue-tinted zinc ramp was removed.
+`ThemeSpec` is a data class over `Colors`; the built-ins are `Themes.Light` and `Themes.Dark`. The sample ships a `DarkPurple` to show the shape of a custom one. Neutral greys are truly neutral (R = G = B).
+
+### Independent axes
+
+Brand accent, shape, typography, elevation, motion and light/dark are separate axes, all passed to `App`. Changing one never resets another:
+
+```kotlin
+App(
+    themeMode = ThemeMode.System,
+    isSystemDark = isSystemDark,
+    theme = Themes.Light.withBrandAccent(Color(0xFF7C3AED)),   // brand colour only
+    shapes = myShapes,                                        // rounded or square preset
+    typography = myTypography,
+) { … }
+```
+
+`withBrandAccent` replaces `primary`, its foreground, the soft `primarySoft` pair and the focus ring, and leaves surfaces, shapes and type alone.
 
 ## The six scales
 
@@ -44,19 +71,23 @@ Everything measured in `dp` comes from one of these. Two of them share numbers w
 
 `md` (12dp) is the most-used step.
 
-### Radius — `Theme.shapes.*` / `Radius.*`
+### Radius — `Theme.shapes.*`
 
-Six steps. `Theme.shapes` gives `Shape` instances for `Modifier.clip`; `Radius` gives the same values as `Dp` for token code. They cannot disagree.
+HeroUI Native's scale. `Theme.shapes` gives `Shape` instances for `Modifier.clip`, and because it is a theme axis a brand can swap it for a square preset without touching components.
 
-| `none` | `sm` | `md` | `lg` | `xl` | `full` |
-| --- | --- | --- | --- | --- | --- |
-| 0 | 4 | 6 | 8 | 12 | 9999 (pill) |
+| `none` | `sm` | `md` | `lg` | `controlLarge` | `xl` | `full` |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 | 8 | 12 | 14 | 16 | 24 | 9999 (pill) |
 
-Inputs and default surfaces sit at `md`; buttons and cards at `lg`; sheets at `xl`. Off-scale values snap to the nearest step — the scale does not grow.
+Small controls and chips sit at `sm`; fields at `md`; buttons and cards at `lg`; large controls at `controlLarge`; dialogs and overlay surfaces at `xl`. Buttons and tabs that are meant to be capsules use `full`.
+
+::: warning `Radius.*` is out of date
+The `Radius` object still holds the pre-beta5 values (4 / 6 / 8 / 12). Read radii from `Theme.shapes`; `Radius` will be aligned in the next beta.
+:::
 
 ### Elevation — `Elevation.*`
 
-GearUI is border-first: **things sitting flat on the page do not cast shadows.** Cards, cells and inputs separate themselves with `colors.border`. A shadow means "this floats above the page", so only overlay-like components use one.
+Surfaces are flat and content-first: depth comes from tokenised shadows and separators, not chrome. Fields are borderless with a soft field shadow (on a white card, use the filled variant); grouped lists separate rows with `separator` lines that start at the text, the way iOS does. A strong shadow means "this floats above the page", so only overlays use the steps below.
 
 | `none` | `raised` | `floating` | `modal` |
 | --- | --- | --- | --- |
@@ -74,7 +105,7 @@ GearUI is border-first: **things sitting flat on the page do not cast shadows.**
 | --- | --- | --- | --- |
 | 0 | 0.5 | 1 | 2 |
 
-`thin` is the field-family default. There is deliberately **no focus-state step**: a border that grows on focus changes the content box and makes the layout jump.
+`hairline` outlines bordered surfaces such as `Card`. There is deliberately **no focus-state step**: a border that grows on focus changes the content box and makes the layout jump.
 
 ### Icon size — `IconSizes.*`
 
@@ -84,13 +115,13 @@ Two groups because they answer different questions. `Default` sits beside text; 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 12 | 14 | 16 | 18 | 24 |  | 28 | 36 | 40 |
 
-### Typography — `Typography.*`
+### Typography — `Theme.typography.*`
 
-Semantic text styles: `DisplayLarge`… `HeadlineMedium`… `TitleSmall`… `BodyMedium` (the most used, 14sp/22sp), `MarkMedium` (bold body), `LinkMedium`, `Caption`, `Label`. Never set `fontSize` on a `Text`; pick a style.
+Semantic text styles: `displayLarge`… `headlineMedium`… `titleSmall`… `bodyMedium` (the most used: 17/22 on Android and iOS, the iOS body size; 15/23 on the Web), `markMedium` (bold body), `linkMedium`, `caption`, `label`. Never set `fontSize` on a `Text`; pick a style.
 
 ## What the guardrails check
 
-The repository runs 18 checks on every push. The ones that matter to a consumer, because they define what "using GearUI correctly" means:
+The repository runs 20 guard scripts on every push, plus two checks that the generated tokens and the component metrics are current. The ones that matter to a consumer, because they define what "using GearUI correctly" means:
 
 - no `Color(0x…)` in component code
 - no literal `dp` inside `RoundedCornerShape(...)`, `.border(...)`, `elevation = ...`, or icon `size = ...`

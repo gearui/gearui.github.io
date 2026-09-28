@@ -6,7 +6,7 @@ titleTemplate: Kotlin Multiplatform UI 组件库
 hero:
   name: GearUI Kit
   text: 一套 UI 代码。Android、iOS、Web。
-  tagline: Kotlin Multiplatform UI 组件库——72 个组件、token 化的设计系统，以及把它们粘在一起的运行时。已发布到 Maven Central。
+  tagline: Kotlin Multiplatform UI 组件库——82 个组件、token 化的设计系统，以及把它们粘在一起的运行时。已发布到 Maven Central。
   image:
     src: /logo.png
     alt: GearUI Kit
@@ -23,7 +23,7 @@ hero:
 
 features:
   - icon: 🧩
-    title: 72 个组件，6 大类
+    title: 82 个组件，6 大类
     details: 从按钮到底部面板，从选择器到引导。每一个在 sample 里都有演示页，本站的组件索引就是从同一份注册表生成的。
     link: /zh-Hans/gearui-kit/guide/components
     linkText: 浏览索引
@@ -60,7 +60,7 @@ features:
   <figure><img src="/gearui-kit/settings-light.png" alt="设置页亮色" /><figcaption>设置 · 亮色</figcaption></figure>
   <figure><img src="/gearui-kit/settings-dark.png" alt="设置页暗色" /><figcaption>设置 · 暗色</figcaption></figure>
 </div>
-<p class="home-shots-note">在 iPhone 17 Pro 模拟器上运行 sample 截取。语言与主题运行时切换，所有组件自动跟随。</p>
+<p class="home-shots-note">在 iPhone 17 Pro Max 模拟器（iOS 26.2）上运行 sample 截取。语言与主题运行时切换，所有组件自动跟随。</p>
 
 <style scoped>
 .home-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; max-width: 1152px; margin: 56px auto 0; padding: 0 24px; }

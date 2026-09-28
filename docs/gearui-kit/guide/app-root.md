@@ -20,6 +20,10 @@ fun App(
     themeMode: ThemeMode = ThemeMode.Light,      // Light | Dark | System
     isSystemDark: Boolean = false,               // read from your platform layer
     theme: ThemeSpec? = null,                    // custom palette; overrides themeMode's default
+    typography: Typography = Typographies.Default,   // other token axes; each independent
+    shapes: Shapes = ShapesDefault.Default,
+    elevation: Elevation = Elevations.Default,
+    motion: Motion = Motions.Default,
     languageTag: String = "en-US",
     fallbackLanguageTag: String = "en-US",
     stringsOverrides: Map<String, StringsPatch> = emptyMap(),

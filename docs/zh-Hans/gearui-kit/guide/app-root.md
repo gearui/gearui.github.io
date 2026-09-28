@@ -20,6 +20,10 @@ fun App(
     themeMode: ThemeMode = ThemeMode.Light,      // Light | Dark | System
     isSystemDark: Boolean = false,               // 由你的平台层读取
     theme: ThemeSpec? = null,                    // 自定义配色；覆盖 themeMode 的默认
+    typography: Typography = Typographies.Default,   // 其余 token 轴；彼此独立
+    shapes: Shapes = ShapesDefault.Default,
+    elevation: Elevation = Elevations.Default,
+    motion: Motion = Motions.Default,
     languageTag: String = "en-US",
     fallbackLanguageTag: String = "en-US",
     stringsOverrides: Map<String, StringsPatch> = emptyMap(),
