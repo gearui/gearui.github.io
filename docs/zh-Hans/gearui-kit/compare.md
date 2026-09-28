@@ -22,7 +22,7 @@ titleTemplate: GearUI Kit
 | 默认视觉 | ✅ iOS 26 基线，四端一致，72 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
 | 设计一致性 | ✅ Token 由 23 条 CI 护栏强制 | 无 | 可主题化，不强制 | 无 |
 | HarmonyOS | ✅ 官方目标平台 | 无 | 社区分支 | 华为维护的分支 |
-| 生态与成熟度 | 小 · beta1（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
+| 生态与成熟度 | 小 · beta5（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
 
 ¹ 腾讯官方在鸿蒙上的实测，华为 Mate 60，复杂 Feed 流场景——[出处](https://news.qq.com/rain/a/20250603A05YV000)。
 
@@ -133,7 +133,7 @@ KuiklyUI 是渲染器。它不提供一个第一天就像成品的组件库，�
 ## Flutter 和 React Native 领先的地方
 
 - **生态。** pub.dev 和 npm 比 Kotlin Multiplatform 的任何东西大一到两个数量级，更不用说这套栈。
-- **成熟度与履历。** Flutter 2017 起，React Native 2015 起。KuiklyUI 2025 年开源——腾讯内部有真实的产线历史，但公开的历史很短。GearUI Kit 在 beta1。
+- **成熟度与履历。** Flutter 2017 起，React Native 2015 起。KuiklyUI 2025 年开源——腾讯内部有真实的产线历史，但公开的历史很短。GearUI Kit 在 beta5。
 - **招人、教程、已回答的问题。** 差距很大。
 - **热重载。** Flutter 的是同类最强。
 - **跨平台逐像素一致。** Flutter 的画布给了它，原生视图给不了。对一个设计驱动、想在每台手机上像素相同的 App，这是优点，而且是 Flutter 的。

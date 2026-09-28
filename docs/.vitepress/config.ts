@@ -14,7 +14,7 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 
 const GITHUB_ORG = 'https://github.com/gearui'
 const KIT_REPO = `${GITHUB_ORG}/gearui-kit`
-const KIT_VERSION = '1.0.0-beta1'
+const KIT_VERSION = '1.0.0-beta5'
 
 // ---------------------------------------------------------------- English
 
@@ -134,7 +134,7 @@ export default defineConfig({
           text: 'Edit this page on GitHub',
         },
         footer: {
-          message: 'GearUI Kit is released under the BSD 3-Clause License.',
+          message: 'GearUI Kit is released under the Apache License 2.0.',
           copyright: 'Copyright © 2026 Shanghai Boyu Information Technology Co., Ltd.',
         },
       },
@@ -153,7 +153,7 @@ export default defineConfig({
           text: '在 GitHub 上编辑此页',
         },
         footer: {
-          message: 'GearUI Kit 基于 BSD 3-Clause 协议发布。',
+          message: 'GearUI Kit 基于 Apache License 2.0 协议发布。',
           copyright: 'Copyright © 2026 上海博宇信息科技有限公司',
         },
         docFooter: { prev: '上一页', next: '下一页' },

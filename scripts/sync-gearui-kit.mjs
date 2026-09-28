@@ -30,8 +30,13 @@ if (!existsSync(registry)) {
 }
 
 // Registered routes that exercise the runtime rather than ship a component.
-// Same list as scripts/gen_component_index.py in the kit; keep them aligned.
-const NON_COMPONENT_IDS = new Set(['icon-render', 'runtime-insets', 'navigator-kuikly-spike', 'navigator-v1-demo'])
+// Same rule as scripts/gen_component_index.py in the kit: any id starting with
+// "runtime-" is a probe by convention; only the older ids that predate the prefix
+// are named. A hand-extended list here missed the frosted-glass, TabHost and
+// Performance probes and listed them as navigation components.
+const RUNTIME_PREFIX = 'runtime-'
+const NON_COMPONENT_IDS = new Set(['icon-render', 'navigator-kuikly-spike', 'navigator-v1-demo'])
+const isComponent = (id) => !id.startsWith(RUNTIME_PREFIX) && !NON_COMPONENT_IDS.has(id)
 
 const ENTRY_RE =
   /ComponentInfo\(\s*"(?<id>[^"]+)",\s*"(?<zh>[^"]*)",\s*"(?<en>[^"]*)",\s*ComponentCategory\.(?<cat>[A-Z_]+),\s*"[^"]*"(?:,\s*"(?<dzh>[^"]*)")?(?:,\s*"(?<den>[^"]*)")?\s*\)/g
@@ -43,7 +48,7 @@ const LABEL = {
 }
 
 const src = readFileSync(registry, 'utf8')
-const entries = [...src.matchAll(ENTRY_RE)].map((m) => m.groups).filter((e) => !NON_COMPONENT_IDS.has(e.id))
+const entries = [...src.matchAll(ENTRY_RE)].map((m) => m.groups).filter((e) => isComponent(e.id))
 if (entries.length === 0) {
   console.error('no ComponentInfo entries parsed')
   process.exit(1)
@@ -69,7 +74,7 @@ function renderEn() {
     out.push('')
   }
   out.push('## Not listed here', '',
-    'The sample also registers a few routes that are runtime checks rather than components (icon rendering, safe-area snapshot, Navigator spikes). They are useful when working on the kit and are deliberately left out of this count.', '')
+    'The sample also registers a few routes that are runtime checks rather than components (icon rendering, safe-area snapshot, frosted-glass, keep-alive and performance probes, Navigator spikes). They are useful when working on the kit and are deliberately left out of this count.', '')
   return out.join('\n')
 }
 
@@ -84,7 +89,7 @@ function renderZh() {
     out.push('')
   }
   out.push('## 未列入的条目', '',
-    'sample 还注册了几条属于运行时验证而非组件的路由（图标渲染、安全区快照、Navigator 探针）。它们对开发 kit 有用，但刻意不计入上面的数字。', '')
+    'sample 还注册了几条属于运行时验证而非组件的路由（图标渲染、安全区快照、毛玻璃、保活与性能探针、Navigator 探针）。它们对开发 kit 有用，但刻意不计入上面的数字。', '')
   return out.join('\n')
 }
 

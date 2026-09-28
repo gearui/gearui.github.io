@@ -10,7 +10,7 @@ titleTemplate: Kotlin Multiplatform UI component library
     <p>A Kotlin Multiplatform UI component library built on Kuikly. Write a screen once in <code>commonMain</code>; it renders natively on Android and iOS and through the DOM on the Web.</p>
     <p class="kit-badges">
       <a href="https://central.sonatype.com/artifact/com.gearui/gearui-kit"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.gearui/gearui-kit?label=Maven%20Central&color=2ea44f" /></a>
-      <a href="https://github.com/gearui/gearui-kit/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-BSD--3--Clause-blue" /></a>
+      <a href="https://github.com/gearui/gearui-kit/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-blue" /></a>
       <a href="https://github.com/gearui/gearui-kit"><img alt="GitHub" src="https://img.shields.io/github/stars/gearui/gearui-kit?style=flat&label=GitHub" /></a>
     </p>
   </div>
@@ -26,7 +26,7 @@ titleTemplate: Kotlin Multiplatform UI component library
 
 ```kotlin
 commonMain.dependencies {
-    implementation("com.gearui:gearui-kit:1.0.0-beta1")
+    implementation("com.gearui:gearui-kit:1.0.0-beta5")
 }
 ```
 
@@ -51,7 +51,7 @@ Nobody has heard of GearUI Kit. Everybody has shipped with at least one of the c
 | Default look | ✅ iOS 26 baseline on every platform, 72 components | Material 3 | Material; Cupertino is second-class | None |
 | Design consistency | ✅ Tokens enforced by 23 CI guards | None | Themeable, not enforced | None |
 | HarmonyOS | ✅ First-class target | No | Community fork | Huawei-maintained fork |
-| Ecosystem and maturity | Small · beta1 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
+| Ecosystem and maturity | Small · beta5 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
 
 ¹ Tencent's own measurement on HarmonyOS, Huawei Mate 60, complex feed scenario — [source](https://news.qq.com/rain/a/20250603A05YV000). SDK sizes from the [KuiklyUI README](https://github.com/Tencent-TDS/KuiklyUI).
 

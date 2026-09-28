@@ -2,29 +2,36 @@
 
 # Components
 
-GearUI Kit ships **72 components** in 6 categories. Every one of them has a demo page in the sample app; the names below are the composable names you import from `com.gearui.components.*`.
+GearUI Kit ships **82 components** in 6 categories. Every one of them has a demo page in the sample app; the names below are the composable names you import from `com.gearui.components.*`.
 
 This page is generated from the sample's component registry, so it cannot disagree with what the sample shows.
 
-## Basic (7)
+## Basic (9)
 
 | Component | Purpose |
 | --- | --- |
 | `Button` | Trigger actions |
 | `Icon` | Icon display |
-| `Link` | Link text |
+| `Link` | Link and LinkButton |
+| `CloseButton` | Unified dismiss button |
+| `PressableFeedback` | Scale and highlight for any tappable area |
 | `Text` | Text display |
 | `Tag` | Marking and classification |
 | `Badge` | Message count indicator |
 | `Divider` | Content separator |
 
-## Form (17)
+## Form (22)
 
 | Component | Purpose |
 | --- | --- |
 | `Input` | Text input |
 | `Checkbox` | Multiple selection |
 | `Radio` | Single selection |
+| `InputOTP` | One-time code input |
+| `ComboBox` | Filterable suggestions |
+| `NumberField` | Typed and stepped number |
+| `ToggleButton` | Toggle and button group |
+| `InputGroup` | Field with attached blocks |
 | `Switch` | Toggle switch |
 | `Slider` | Value selection |
 | `Stepper` | Number stepper |
@@ -57,17 +64,19 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Segmented` | Segmented control |
 | `FAB` | Floating action button |
 
-## Data display (15)
+## Data display (17)
 
 | Component | Purpose |
 | --- | --- |
 | `List` | List display |
 | `Card` | Card container |
 | `Cell` | List cell component |
+| `CellGroup` | Grouped list rows |
 | `Table` | Data table |
 | `Image` | Image display |
 | `ImageViewer` | Image preview |
 | `Avatar` | User avatar |
+| `ScrollShadow` | Fades scrollable edges |
 | `Collapse` | Content collapse |
 | `Progress` | Progress display |
 | `Empty` | Empty state |
@@ -77,7 +86,7 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Calendar` | Calendar display |
 | `Watermark` | Page watermark |
 
-## Feedback (15)
+## Feedback (16)
 
 | Component | Purpose |
 | --- | --- |
@@ -89,7 +98,8 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `ContextMenu` | Context menu |
 | `Loading` | Loading state |
 | `Message` | Global message |
-| `NoticeBar` | Notice bar |
+| `Alert` | Inline status message |
+| `NoticeBar` | Scrolling announcement |
 | `Notification` | Global notification |
 | `Snackbar` | Bottom message |
 | `Popup` | Popup content |
@@ -104,10 +114,10 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Grid` | Grid layout |
 | `Swiper` | Content carousel |
 | `SearchBar` | Search input |
-| `Refresh` | Pull-to-refresh showcase |
+| `PullRefresh` | Pull to refresh a list |
 | `BottomSheet` | Bottom sheet |
 | `BackTop` | Back to top |
 
 ## Not listed here
 
-The sample also registers a few routes that are runtime checks rather than components (icon rendering, safe-area snapshot, Navigator spikes). They are useful when working on the kit and are deliberately left out of this count.
+The sample also registers a few routes that are runtime checks rather than components (icon rendering, safe-area snapshot, frosted-glass, keep-alive and performance probes, Navigator spikes). They are useful when working on the kit and are deliberately left out of this count.

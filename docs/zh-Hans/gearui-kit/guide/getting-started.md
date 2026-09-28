@@ -24,7 +24,7 @@ repositories { mavenCentral() }
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("com.gearui:gearui-kit:1.0.0-beta1")
+            implementation("com.gearui:gearui-kit:1.0.0-beta5")
         }
     }
 }

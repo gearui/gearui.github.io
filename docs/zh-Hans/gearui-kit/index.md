@@ -10,7 +10,7 @@ titleTemplate: Kotlin Multiplatform UI 组件库
     <p>基于 Kuikly 的 Kotlin Multiplatform UI 组件库。在 <code>commonMain</code> 里把一个页面写一遍；Android 与 iOS 上以原生渲染，Web 上以 DOM 渲染。</p>
     <p class="kit-badges">
       <a href="https://central.sonatype.com/artifact/com.gearui/gearui-kit"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.gearui/gearui-kit?label=Maven%20Central&color=2ea44f" /></a>
-      <a href="https://github.com/gearui/gearui-kit/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-BSD--3--Clause-blue" /></a>
+      <a href="https://github.com/gearui/gearui-kit/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-blue" /></a>
       <a href="https://github.com/gearui/gearui-kit"><img alt="GitHub" src="https://img.shields.io/github/stars/gearui/gearui-kit?style=flat&label=GitHub" /></a>
     </p>
   </div>
@@ -26,7 +26,7 @@ titleTemplate: Kotlin Multiplatform UI 组件库
 
 ```kotlin
 commonMain.dependencies {
-    implementation("com.gearui:gearui-kit:1.0.0-beta1")
+    implementation("com.gearui:gearui-kit:1.0.0-beta5")
 }
 ```
 
@@ -51,7 +51,7 @@ commonMain.dependencies {
 | 默认视觉 | ✅ iOS 26 基线，四端一致，72 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
 | 设计一致性 | ✅ Token 由 23 条 CI 护栏强制 | 无 | 可主题化，不强制 | 无 |
 | HarmonyOS | ✅ 官方目标平台 | 无 | 社区分支 | 华为维护的分支 |
-| 生态与成熟度 | 小 · beta1（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
+| 生态与成熟度 | 小 · beta5（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
 
 ¹ 腾讯官方在鸿蒙上的实测，华为 Mate 60，复杂 Feed 流场景——[出处](https://news.qq.com/rain/a/20250603A05YV000)。SDK 体积来自 [KuiklyUI README](https://github.com/Tencent-TDS/KuiklyUI)。
 

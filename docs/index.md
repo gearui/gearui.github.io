@@ -49,7 +49,7 @@ features:
     linkText: Internationalisation
   - icon: 📦
     title: One coordinate
-    details: implementation("com.gearui:gearui-kit:1.0.0-beta1") in commonMain. Gradle resolves the Android, iOS and JS artifacts from the module metadata.
+    details: implementation("com.gearui:gearui-kit:1.0.0-beta5") in commonMain. Gradle resolves the Android, iOS and JS artifacts from the module metadata.
     link: /gearui-kit/guide/getting-started
     linkText: Getting started
 ---

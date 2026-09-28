@@ -49,7 +49,7 @@ features:
     linkText: 国际化
   - icon: 📦
     title: 一行坐标
-    details: commonMain 里 implementation("com.gearui:gearui-kit:1.0.0-beta1")。Gradle 从 module metadata 自动解析 Android、iOS、JS 产物。
+    details: commonMain 里 implementation("com.gearui:gearui-kit:1.0.0-beta5")。Gradle 从 module metadata 自动解析 Android、iOS、JS 产物。
     link: /zh-Hans/gearui-kit/guide/getting-started
     linkText: 快速开始
 ---

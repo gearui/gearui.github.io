@@ -22,7 +22,7 @@ Two rules for reading it. First, it compares **stack to stack**: Flutter is a la
 | Default look | ✅ iOS 26 baseline on every platform, 72 components | Material 3 | Material; Cupertino is second-class | None |
 | Design consistency | ✅ Tokens enforced by 23 CI guards | None | Themeable, not enforced | None |
 | HarmonyOS | ✅ First-class target | No | Community fork | Huawei-maintained fork |
-| Ecosystem and maturity | Small · beta1 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
+| Ecosystem and maturity | Small · beta5 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
 
 ¹ Tencent's own measurement on HarmonyOS, Huawei Mate 60, complex feed scenario — [source](https://news.qq.com/rain/a/20250603A05YV000).
 
@@ -133,7 +133,7 @@ Two things this table is careful about. The 6× is against React Native's Harmon
 ## Where Flutter and React Native are ahead
 
 - **Ecosystem.** pub.dev and npm are one to two orders of magnitude larger than anything Kotlin Multiplatform offers, let alone this stack.
-- **Maturity and track record.** Flutter since 2017, React Native since 2015. KuiklyUI was open-sourced in 2025 — with a real production history inside Tencent, but a short public one. GearUI Kit is at beta1.
+- **Maturity and track record.** Flutter since 2017, React Native since 2015. KuiklyUI was open-sourced in 2025 — with a real production history inside Tencent, but a short public one. GearUI Kit is at beta5.
 - **Hiring, tutorials, answered questions.** Not close.
 - **Hot reload.** Flutter's is the best there is.
 - **Pixel-identical UI across platforms.** Flutter's canvas gives it; native views do not. For a design-led app that wants the same pixels on every phone, that is a feature, and it is Flutter's.
