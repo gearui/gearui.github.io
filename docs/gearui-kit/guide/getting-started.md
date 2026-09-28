@@ -19,16 +19,21 @@ The Kotlin version is not negotiable: KuiklyUI artifacts are published per Kotli
 
 ```kotlin
 // build.gradle.kts
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+    maven("https://mirrors.tencent.com/nexus/repository/maven-tencent/")  // KuiklyUI 2.x
+}
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("com.gearui:gearui-kit:1.0.0-beta5")
+            implementation("com.gearui:gearui-kit:1.0.0-beta6")
         }
     }
 }
 ```
+
+The second repository is not optional: GearUI Kit depends on KuiklyUI, and KuiklyUI 2.x is published to Tencent's Maven mirror, not Maven Central. Without it the dependency does not resolve.
 
 Declare only the root coordinate. Gradle reads the module metadata and resolves the per-target artifact (`gearui-kit-android`, `-js`, `-iosarm64`, …) for whatever you are compiling. Never depend on those directly.
 

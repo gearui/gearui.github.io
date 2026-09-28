@@ -6,7 +6,7 @@ titleTemplate: Kotlin Multiplatform UI component library
 hero:
   name: GearUI Kit
   text: One UI codebase. Android, iOS, Web.
-  tagline: A Kotlin Multiplatform UI component library — 82 components, a tokenised design system and the runtime that holds them together. Published on Maven Central.
+  tagline: A Kotlin Multiplatform UI component library — 71 components, a tokenised design system and the runtime that holds them together. Published on Maven Central.
   image:
     src: /logo.png
     alt: GearUI Kit
@@ -23,7 +23,7 @@ hero:
 
 features:
   - icon: 🧩
-    title: 82 components, 6 categories
+    title: 71 components, 6 categories
     details: Buttons to bottom sheets, pickers to tours. Every one ships a demo page in the sample app, and the index on this site is generated from that same registry.
     link: /gearui-kit/guide/components
     linkText: Browse the index
@@ -49,7 +49,7 @@ features:
     linkText: Internationalisation
   - icon: 📦
     title: One coordinate
-    details: implementation("com.gearui:gearui-kit:1.0.0-beta5") in commonMain. Gradle resolves the Android, iOS and JS artifacts from the module metadata.
+    details: implementation("com.gearui:gearui-kit:1.0.0-beta6") in commonMain. Gradle resolves the Android, iOS and JS artifacts from the module metadata.
     link: /gearui-kit/guide/getting-started
     linkText: Getting started
 ---

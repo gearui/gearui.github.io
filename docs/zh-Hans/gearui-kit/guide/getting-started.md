@@ -19,16 +19,21 @@ Kotlin 版本没有商量余地：KuiklyUI 的产物按 Kotlin 版本发布，�
 
 ```kotlin
 // build.gradle.kts
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+    maven("https://mirrors.tencent.com/nexus/repository/maven-tencent/")  // KuiklyUI 2.x
+}
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("com.gearui:gearui-kit:1.0.0-beta5")
+            implementation("com.gearui:gearui-kit:1.0.0-beta6")
         }
     }
 }
 ```
+
+第二个仓库不能省：GearUI Kit 依赖 KuiklyUI，而 KuiklyUI 2.x 发布在腾讯 Maven 镜像，不在 Maven Central。不加它，依赖解析不到。
 
 只声明根坐标。Gradle 读 module metadata，按当前编译目标自动解析到对应平台包（`gearui-kit-android`、`-js`、`-iosarm64`…）。那些带后缀的坐标不要手写。
 

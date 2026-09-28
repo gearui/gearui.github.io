@@ -81,13 +81,11 @@ HeroUI Native's scale. `Theme.shapes` gives `Shape` instances for `Modifier.clip
 
 Small controls and chips sit at `sm`; fields at `md`; buttons and cards at `lg`; large controls at `controlLarge`; dialogs and overlay surfaces at `xl`. Buttons and tabs that are meant to be capsules use `full`.
 
-::: warning `Radius.*` is out of date
-The `Radius` object still holds the pre-beta5 values (4 / 6 / 8 / 12). Read radii from `Theme.shapes`; `Radius` will be aligned in the next beta.
-:::
+`Radius.*` gives the same steps as `Dp` for code that needs a number rather than a `Shape`; both are read from the same generated geometry.
 
 ### Elevation — `Elevation.*`
 
-Surfaces are flat and content-first: depth comes from tokenised shadows and separators, not chrome. Fields are borderless with a soft field shadow (on a white card, use the filled variant); grouped lists separate rows with `separator` lines that start at the text, the way iOS does. A strong shadow means "this floats above the page", so only overlays use the steps below.
+Surfaces are flat and content-first: depth comes from tokenised shadows and separators, not chrome. Fields are borderless with a soft field shadow (on a card or sheet, pass `variant = FieldVariant.SECONDARY` for the filled look; every field-family component takes it); grouped lists separate rows with `separator` lines that start at the text, the way iOS does. A strong shadow means "this floats above the page", so only overlays use the steps below.
 
 | `none` | `raised` | `floating` | `modal` |
 | --- | --- | --- | --- |

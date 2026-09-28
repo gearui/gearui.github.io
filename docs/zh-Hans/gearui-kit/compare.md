@@ -19,10 +19,10 @@ titleTemplate: GearUI Kit
 | 性能 | ✅ 首屏 122ms vs 原生 125ms · SDK 300KB / 1.2MB ¹ | Skiko | 引擎，MB 级 | JS 引擎 + bundle |
 | 平台调试工具 | ✅ 每个视图可见、可归因；Android 上就是原生天花板 | Android 可见，iOS 黑盒 | 黑盒 FlutterView，只能 DevTools | 可见，但要对两条栈 |
 | 语言 | Kotlin，与 Android 团队和 JVM 后端共享 | Kotlin | Dart | JS / TS |
-| 默认视觉 | ✅ HeroUI Native 打底 + iOS 26 平台控件，四端一致，82 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
+| 默认视觉 | ✅ HeroUI Native 打底 + iOS 26 平台控件，四端一致，71 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
 | 设计一致性 | ✅ Token 由 22 项 CI 检查强制 | 无 | 可主题化，不强制 | 无 |
 | HarmonyOS | ✅ 官方目标平台 | 无 | 社区分支 | 华为维护的分支 |
-| 生态与成熟度 | 小 · beta5（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
+| 生态与成熟度 | 小 · beta6（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
 
 ¹ 腾讯官方在鸿蒙上的实测，华为 Mate 60，复杂 Feed 流场景——[出处](https://news.qq.com/rain/a/20250603A05YV000)。
 
@@ -60,7 +60,7 @@ KuiklyUI 是渲染器。它不提供一个第一天就像成品的组件库，�
 
 | 痛点 | Flutter / React Native / Compose MP | GearUI Kit |
 |---|---|---|
-| 默认就像 iOS | Flutter 默认 Material，Cupertino 是画出来的、不完整的仿品；React Native 什么都不给；Compose MP 是 Material 3 | HeroUI Native 是底线，平台标志性控件（开关、列表行、分组卡片、分隔线）取 iOS 26 模拟器实测值，四端一套设计语言，82 个组件。每个控件数值都记录了取自哪一方、为什么——[取值规则](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#2-数值来源)、[逐 token 对照表](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md) |
+| 默认就像 iOS | Flutter 默认 Material，Cupertino 是画出来的、不完整的仿品；React Native 什么都不给；Compose MP 是 Material 3 | HeroUI Native 是底线，平台标志性控件（开关、列表行、分组卡片、分隔线）取 iOS 26 模拟器实测值，四端一套设计语言，71 个组件。每个控件数值都记录了取自哪一方、为什么——[取值规则](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#2-数值来源)、[逐 token 对照表](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md) |
 | 十个人提交半年后还像一个产品 | 靠自觉 | 六条 token 标度、**20 个护栏脚本**加一项来源校验：组件代码里禁字面量，圆角只能来自标度——[护栏本身](https://github.com/gearui/gearui-kit/tree/main/scripts/ci) |
 | 图标 | 字体 glyph，或各 App 自己导入 | Phosphor 以图片资源内置，沿用 Phosphor 的命名，不是字体 |
 | 毛玻璃这类平台效果 | 各 App 自己做 | 材质层带**降级规则**：模糊跑不了的地方退成不透明面，绝不在任意内容上留一层半透明烂片。我们还[公开了渲染器模糊能力的缺口](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#5-阴影边框与材质)——把自己依赖层的缺口公开，是被信任的一部分 |
@@ -142,7 +142,7 @@ iOS 目前只有模拟器数据——主题切换 36.8ms，滚动卡帧 0.0%；�
 ## Flutter 和 React Native 领先的地方
 
 - **生态。** pub.dev 和 npm 比 Kotlin Multiplatform 的任何东西大一到两个数量级，更不用说这套栈。
-- **成熟度与履历。** Flutter 2017 起，React Native 2015 起。KuiklyUI 2025 年开源——腾讯内部有真实的产线历史，但公开的历史很短。GearUI Kit 在 beta5。
+- **成熟度与履历。** Flutter 2017 起，React Native 2015 起。KuiklyUI 2025 年开源——腾讯内部有真实的产线历史，但公开的历史很短。GearUI Kit 在 beta6。
 - **招人、教程、已回答的问题。** 差距很大。
 - **热重载。** Flutter 的是同类最强。
 - **跨平台逐像素一致。** Flutter 的画布给了它，原生视图给不了。对一个设计驱动、想在每台手机上像素相同的 App，这是优点，而且是 Flutter 的。

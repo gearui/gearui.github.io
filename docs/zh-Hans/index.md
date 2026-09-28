@@ -6,7 +6,7 @@ titleTemplate: Kotlin Multiplatform UI 组件库
 hero:
   name: GearUI Kit
   text: 一套 UI 代码。Android、iOS、Web。
-  tagline: Kotlin Multiplatform UI 组件库——82 个组件、token 化的设计系统，以及把它们粘在一起的运行时。已发布到 Maven Central。
+  tagline: Kotlin Multiplatform UI 组件库——71 个组件、token 化的设计系统，以及把它们粘在一起的运行时。已发布到 Maven Central。
   image:
     src: /logo.png
     alt: GearUI Kit
@@ -23,7 +23,7 @@ hero:
 
 features:
   - icon: 🧩
-    title: 82 个组件，6 大类
+    title: 71 个组件，6 大类
     details: 从按钮到底部面板，从选择器到引导。每一个在 sample 里都有演示页，本站的组件索引就是从同一份注册表生成的。
     link: /zh-Hans/gearui-kit/guide/components
     linkText: 浏览索引
@@ -49,7 +49,7 @@ features:
     linkText: 国际化
   - icon: 📦
     title: 一行坐标
-    details: commonMain 里 implementation("com.gearui:gearui-kit:1.0.0-beta5")。Gradle 从 module metadata 自动解析 Android、iOS、JS 产物。
+    details: commonMain 里 implementation("com.gearui:gearui-kit:1.0.0-beta6")。Gradle 从 module metadata 自动解析 Android、iOS、JS 产物。
     link: /zh-Hans/gearui-kit/guide/getting-started
     linkText: 快速开始
 ---

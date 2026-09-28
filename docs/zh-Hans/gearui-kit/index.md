@@ -26,11 +26,11 @@ titleTemplate: Kotlin Multiplatform UI 组件库
 
 ```kotlin
 commonMain.dependencies {
-    implementation("com.gearui:gearui-kit:1.0.0-beta5")
+    implementation("com.gearui:gearui-kit:1.0.0-beta6")
 }
 ```
 
-- **82 个组件**，分 6 类——每一个在 sample 里都有演示页
+- **71 个组件**，分 6 类——每一个在 sample 里都有演示页
 - **有牙齿的设计 token**——颜色、圆角、阴影、间距、描边、图标尺寸都是具名标度；CI 拒绝组件代码里的硬编码字面量
 - **运行时内置**——`App` 根节点一次调用接好主题、i18n、浮层宿主与稳定化的安全区管线
 - **i18n 内置**——按 BCP 47 语言标签解析语言包，按域拆分不撞 Android DEX 上限，下游库接同一条管线
@@ -48,10 +48,10 @@ commonMain.dependencies {
 | 性能 | ✅ 首屏 122ms vs 原生 125ms · SDK 300KB / 1.2MB ¹ | Skiko | 引擎，MB 级 | JS 引擎 + bundle |
 | 平台调试工具 | ✅ 每个视图可见、可归因；Android 上就是原生天花板 | Android 可见，iOS 黑盒 | 黑盒 FlutterView，只能 DevTools | 可见，但要对两条栈 |
 | 语言 | Kotlin，与 Android 团队和 JVM 后端共享 | Kotlin | Dart | JS / TS |
-| 默认视觉 | ✅ HeroUI Native 打底 + iOS 26 平台控件，四端一致，82 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
+| 默认视觉 | ✅ HeroUI Native 打底 + iOS 26 平台控件，四端一致，71 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
 | 设计一致性 | ✅ Token 由 22 项 CI 检查强制 | 无 | 可主题化，不强制 | 无 |
 | HarmonyOS | ✅ 官方目标平台 | 无 | 社区分支 | 华为维护的分支 |
-| 生态与成熟度 | 小 · beta5（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
+| 生态与成熟度 | 小 · beta6（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
 
 ¹ 腾讯官方在鸿蒙上的实测，华为 Mate 60，复杂 Feed 流场景——[出处](https://news.qq.com/rain/a/20250603A05YV000)。SDK 体积来自 [KuiklyUI README](https://github.com/Tencent-TDS/KuiklyUI)。
 

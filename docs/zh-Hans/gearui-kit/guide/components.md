@@ -2,7 +2,7 @@
 
 # 组件
 
-GearUI Kit 提供 **82 个组件**，分 6 类。每一个在 sample 里都有对应演示页；下表中的名字就是你从 `com.gearui.components.*` import 的 composable 名。
+GearUI Kit 提供 **71 个组件**，分 6 类。每一个在 sample 里都有对应演示页；下表中的名字就是你从 `com.gearui.components.*` import 的 composable 名。
 
 本页由 sample 的组件注册表生成，因此不会与 sample 实际展示的内容不一致。
 
@@ -20,7 +20,7 @@ GearUI Kit 提供 **82 个组件**，分 6 类。每一个在 sample 里都有�
 | `Badge` | 徽标 | 消息数量提示 |
 | `Divider` | 分割线 | 内容分隔 |
 
-## 表单（22）
+## 表单（19）
 
 | 组件 | 中文名 | 用途 |
 | --- | --- | --- |
@@ -40,31 +40,22 @@ GearUI Kit 提供 **82 个组件**，分 6 类。每一个在 sample 里都有�
 | `Select` | 下拉选择 | 下拉选择器 |
 | `Picker` | 选择器 | 多列选择 |
 | `DatePicker` | 日期选择 | 日期时间选择 |
-| `DropdownMenu` | 下拉菜单 | 筛选下拉菜单 |
 | `Upload` | 上传 | 文件上传 |
 | `Form` | 表单 | 表单容器 |
 | `Cascader` | 级联选择 | 级联选择器 |
-| `Transfer` | 穿梭框 | 数据穿梭选择 |
-| `TreeSelect` | 树选择 | 树形选择器 |
 
-## 导航（12）
+## 导航（6）
 
 | 组件 | 中文名 | 用途 |
 | --- | --- | --- |
 | `NavBar` | 导航栏 | 通用页面导航栏 |
 | `BottomNavBar` | 底部导航栏 | 应用底部主导航 |
 | `Tabs` | 选项卡 | 内容切换 |
-| `NavigationMenu` | 导航菜单 | 顶部导航菜单 |
-| `Sidebar` | 侧边栏 | 侧边导航 |
 | `Drawer` | 抽屉 | 侧滑抽屉 |
 | `Steps` | 步骤条 | 步骤指示 |
-| `Pagination` | 分页 | 页码导航 |
-| `Breadcrumb` | 面包屑 | 路径导航 |
-| `Anchor` | 锚点 | 页面锚点导航 |
 | `Segmented` | 分段控制 | 分段选择 |
-| `FAB` | 悬浮按钮 | 浮动操作按钮 |
 
-## 数据展示（17）
+## 数据展示（16）
 
 | 组件 | 中文名 | 用途 |
 | --- | --- | --- |
@@ -82,11 +73,10 @@ GearUI Kit 提供 **82 个组件**，分 6 类。每一个在 sample 里都有�
 | `Empty` | 空状态 | 空数据提示 |
 | `Skeleton` | 骨架屏 | 加载占位 |
 | `Timeline` | 时间轴 | 时间线展示 |
-| `Tree` | 树 | 树形结构 |
 | `Calendar` | 日历 | 日历展示 |
 | `Watermark` | 水印 | 页面水印 |
 
-## 反馈（16）
+## 反馈（15）
 
 | 组件 | 中文名 | 用途 |
 | --- | --- | --- |
@@ -97,7 +87,6 @@ GearUI Kit 提供 **82 个组件**，分 6 类。每一个在 sample 里都有�
 | `Tooltip` | 文字提示 | 文字提示 |
 | `ContextMenu` | 上下文菜单 | 上下文菜单 |
 | `Loading` | 加载 | 加载状态 |
-| `Message` | 消息提醒 | 全局消息提示 |
 | `Alert` | 警示框 | 页面内状态提示 |
 | `NoticeBar` | 公告栏 | 滚动公告栏 |
 | `Notification` | 通知 | 全局通知 |

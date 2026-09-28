@@ -2,7 +2,7 @@
 
 # Components
 
-GearUI Kit ships **82 components** in 6 categories. Every one of them has a demo page in the sample app; the names below are the composable names you import from `com.gearui.components.*`.
+GearUI Kit ships **71 components** in 6 categories. Every one of them has a demo page in the sample app; the names below are the composable names you import from `com.gearui.components.*`.
 
 This page is generated from the sample's component registry, so it cannot disagree with what the sample shows.
 
@@ -20,7 +20,7 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Badge` | Message count indicator |
 | `Divider` | Content separator |
 
-## Form (22)
+## Form (19)
 
 | Component | Purpose |
 | --- | --- |
@@ -40,31 +40,22 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Select` | Dropdown selector |
 | `Picker` | Multi-column picker |
 | `DatePicker` | Date & time picker |
-| `DropdownMenu` | Filter dropdown menu |
 | `Upload` | File upload |
 | `Form` | Form container |
 | `Cascader` | Cascade selector |
-| `Transfer` | Data transfer |
-| `TreeSelect` | Tree selector |
 
-## Navigation (12)
+## Navigation (6)
 
 | Component | Purpose |
 | --- | --- |
 | `NavBar` | Page navigation bar |
 | `BottomNavBar` | App bottom navigation |
 | `Tabs` | Content switching |
-| `NavigationMenu` | Top navigation menu |
-| `Sidebar` | Side navigation |
 | `Drawer` | Slide drawer |
 | `Steps` | Step indicator |
-| `Pagination` | Pagination navigation |
-| `Breadcrumb` | Path navigation |
-| `Anchor` | Page anchor navigation |
 | `Segmented` | Segmented control |
-| `FAB` | Floating action button |
 
-## Data display (17)
+## Data display (16)
 
 | Component | Purpose |
 | --- | --- |
@@ -82,11 +73,10 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Empty` | Empty state |
 | `Skeleton` | Loading placeholder |
 | `Timeline` | Timeline display |
-| `Tree` | Tree structure |
 | `Calendar` | Calendar display |
 | `Watermark` | Page watermark |
 
-## Feedback (16)
+## Feedback (15)
 
 | Component | Purpose |
 | --- | --- |
@@ -97,7 +87,6 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Tooltip` | Tooltip |
 | `ContextMenu` | Context menu |
 | `Loading` | Loading state |
-| `Message` | Global message |
 | `Alert` | Inline status message |
 | `NoticeBar` | Scrolling announcement |
 | `Notification` | Global notification |

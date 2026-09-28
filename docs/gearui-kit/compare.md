@@ -19,10 +19,10 @@ Two rules for reading it. First, it compares **stack to stack**: Flutter is a la
 | Performance | ✅ First screen 122 ms vs native 125 ms · SDK 300 KB / 1.2 MB ¹ | Skiko | Engine, MB-scale | JS engine + bundle |
 | Platform debugging tools | ✅ Every view visible and attributable; on Android, the native ceiling | Visible on Android, opaque on iOS | Opaque FlutterView; DevTools only | Visible; two stacks to correlate |
 | Language | Kotlin, shared with the Android team and a JVM backend | Kotlin | Dart | JS / TS |
-| Default look | ✅ HeroUI Native floor + iOS 26 platform controls, 82 components | Material 3 | Material; Cupertino is second-class | None |
+| Default look | ✅ HeroUI Native floor + iOS 26 platform controls, 71 components | Material 3 | Material; Cupertino is second-class | None |
 | Design consistency | ✅ Tokens enforced by 22 CI checks | None | Themeable, not enforced | None |
 | HarmonyOS | ✅ First-class target | No | Community fork | Huawei-maintained fork |
-| Ecosystem and maturity | Small · beta5 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
+| Ecosystem and maturity | Small · beta6 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
 
 ¹ Tencent's own measurement on HarmonyOS, Huawei Mate 60, complex feed scenario — [source](https://news.qq.com/rain/a/20250603A05YV000).
 
@@ -60,7 +60,7 @@ KuiklyUI is a renderer. It does not ship a component library that looks like a f
 
 | Pain point | Flutter / React Native / Compose MP | GearUI Kit |
 |---|---|---|
-| Looks like iOS by default | Flutter defaults to Material and its Cupertino set is a painted, incomplete imitation; React Native ships nothing; Compose MP is Material 3 | HeroUI Native as the floor, iOS 26 for platform-signature controls (switch, list rows, grouped cards, separators — measured on the simulator), one design language on every platform, 82 components. Every control value records which reference it follows and why — [the rule](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#2-where-values-come-from), [the per-token table](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.md) |
+| Looks like iOS by default | Flutter defaults to Material and its Cupertino set is a painted, incomplete imitation; React Native ships nothing; Compose MP is Material 3 | HeroUI Native as the floor, iOS 26 for platform-signature controls (switch, list rows, grouped cards, separators — measured on the simulator), one design language on every platform, 71 components. Every control value records which reference it follows and why — [the rule](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#2-where-values-come-from), [the per-token table](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.md) |
 | Still looks like one product after ten people have committed for six months | Discipline | Six token scales, **20 guard scripts** and a provenance check: literals are rejected in component code, a radius can only come from the scale — [the guards](https://github.com/gearui/gearui-kit/tree/main/scripts/ci) |
 | Icons | Font glyphs, or each app imports its own | Phosphor shipped as image assets under Phosphor's own names, not a font |
 | Platform effects such as frosted glass | Each app on its own | A material layer with a **degradation rule**: where blur cannot run, the surface goes opaque rather than leaving a translucent wash over arbitrary content. We also [document where the renderer's blur falls short](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#5-shadows-borders-and-materials) — publishing our own dependency's gaps is part of being believed |
@@ -142,7 +142,7 @@ iOS so far has simulator numbers only — theme switch 36.8 ms, scroll 0.0 % jan
 ## Where Flutter and React Native are ahead
 
 - **Ecosystem.** pub.dev and npm are one to two orders of magnitude larger than anything Kotlin Multiplatform offers, let alone this stack.
-- **Maturity and track record.** Flutter since 2017, React Native since 2015. KuiklyUI was open-sourced in 2025 — with a real production history inside Tencent, but a short public one. GearUI Kit is at beta5.
+- **Maturity and track record.** Flutter since 2017, React Native since 2015. KuiklyUI was open-sourced in 2025 — with a real production history inside Tencent, but a short public one. GearUI Kit is at beta6.
 - **Hiring, tutorials, answered questions.** Not close.
 - **Hot reload.** Flutter's is the best there is.
 - **Pixel-identical UI across platforms.** Flutter's canvas gives it; native views do not. For a design-led app that wants the same pixels on every phone, that is a feature, and it is Flutter's.
