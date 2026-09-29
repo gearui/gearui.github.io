@@ -20,6 +20,30 @@ docs/
 scripts/sync-gearui-kit.mjs   regenerates guide/components.md (both locales) + screenshots
 ```
 
+## Interactive Web sample
+
+The home hero embeds the GearUI Kit Web sample from `/gearui-kit/demo/`. The
+Pages workflow checks out the **pinned GearUI Kit commit** in
+`.github/workflows/deploy.yml`, builds its production JS bundles, and copies
+only the runnable files into the Pages artifact. Generated bundles are not
+committed here. The current site release text describes the published beta6;
+the embedded sample is a development preview and may contain newer components.
+
+To reproduce the Pages artifact locally with GearUI Kit at `../gearui-kit`:
+
+```bash
+pnpm build
+(cd ../gearui-kit && ./gradlew :sample:jsApp:jsBrowserProductionWebpack)
+(cd ../gearui-kit && ./gradlew :sample:jsBrowserProductionWebpack)
+pnpm build:web-demo ../gearui-kit
+pnpm preview
+```
+
+Keep the two Gradle invocations separate: the host currently stages the
+development bundle, which conflicts with production sample compilation when
+both tasks run in one Gradle build. The packaging step selects the production
+bundle, not the staged development copy.
+
 ## Adding a product
 
 1. `docs/<product>/index.md` and `docs/zh-Hans/<product>/index.md`

@@ -9,7 +9,8 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "sync:gearui-kit": "node scripts/sync-gearui-kit.mjs"
+    "sync:gearui-kit": "node scripts/sync-gearui-kit.mjs",
+    "build:web-demo": "node scripts/build-web-demo.mjs"
   },
   "devDependencies": {
     "vitepress": "^1.6.4",
