@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: gearui/gearui-kit
-          ref: 517a9235df82278265336c1c2133bea600391f39
+          ref: 41784f3bf475ea9b4ce3337905c3f0c4c86f759b
           path: gearui-kit
       - uses: actions/setup-java@v5
         with:
