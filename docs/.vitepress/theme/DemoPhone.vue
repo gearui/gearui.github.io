@@ -1,7 +1,8 @@
 <script setup lang="ts">
-defineProps<{ chinese: boolean }>()
+import { computed } from 'vue'
 
-const demoUrl = '/gearui-kit/demo/'
+const props = defineProps<{ chinese: boolean }>()
+const demoUrl = computed(() => `/gearui-kit/demo/?lang=${props.chinese ? 'zh-Hans' : 'en-US'}`)
 </script>
 
 <template>

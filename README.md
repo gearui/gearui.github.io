@@ -26,6 +26,14 @@ The home hero embeds the GearUI Kit Web sample from `/gearui-kit/demo/` via
 `docs/.vitepress/theme/DemoPhone.vue`. Both language versions use the same
 demo. This is a **development preview**, not the published beta named in the
 site release text; updating the demo does not change the advertised release.
+The English and Chinese home pages pass `lang=en-US` and `lang=zh-Hans` to the
+iframe respectively. When opened directly without `lang`, the Web sample uses
+the browser language (Traditional Chinese for `zh-Hant`/`zh-TW`/`zh-HK`/`zh-MO`,
+Simplified Chinese for other `zh` tags, English otherwise). A `lang` query
+parameter takes precedence; the in-sample language setting can then be changed
+at runtime. With the sample's theme set to **Follow system**, Web uses the
+browser's `prefers-color-scheme` and updates when it changes. An explicit
+light/dark selection in the sample overrides the system preference.
 
 ### Deployment rules
 
