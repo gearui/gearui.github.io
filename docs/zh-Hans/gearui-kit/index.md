@@ -38,20 +38,20 @@ commonMain.dependencies {
 
 ## 与主流方案的对比
 
-没人听说过 GearUI Kit，但右边几列你至少用过一个。要说清这套栈强在哪，最诚实的办法就是把它放到你熟悉的东西旁边。每一行都是真实差异：✅ 标的是这套栈明显领先的地方，最后一行是它明显落后的地方。[完整对比](/zh-Hans/gearui-kit/compare)里有推理过程、每一层各自解决的痛点、调试工具链，以及每个数字的出处。
+没人听说过 GearUI Kit，但 Flutter 和 React Native 你至少用过一个。要说清 GearUI Kit 强在哪，最诚实的办法就是把它放到你熟悉的东西旁边。每一行都是真实差异：✅ 标的是 GearUI Kit 明显领先的地方，最后一行是它明显落后的地方。[完整对比](/zh-Hans/gearui-kit/compare)里有推理过程、每一层各自解决的痛点、调试工具链，以及每个数字的出处。
 
-| | GearUI Kit + KuiklyUI + KMP | 普通 KMP（Compose MP） | Flutter | React Native |
-|---|---|---|---|---|
-| 渲染 | ✅ 全部是真实原生视图 | Android 原生；iOS 画布 | 自带引擎，全平台画布 | 真实原生视图 |
-| 原生控件：输入法、自动填充、辅助功能、文本选择 | ✅ 系统自带 | iOS 上重实现 | 全部重实现；原生视图要「嵌」进去 | 系统自带 |
-| 跟随系统设计升级（iOS 26） | ✅ 系统发布当天即得 | iOS 上等重画 | 等框架重画 | 系统发布当天即得 |
-| 性能 | ✅ 首屏 122ms vs 原生 125ms · SDK 300KB / 1.2MB ¹ | Skiko | 引擎，MB 级 | JS 引擎 + bundle |
-| 平台调试工具 | ✅ 每个视图可见、可归因；Android 上就是原生天花板 | Android 可见，iOS 黑盒 | 黑盒 FlutterView，只能 DevTools | 可见，但要对两条栈 |
-| 语言 | Kotlin，与 Android 团队和 JVM 后端共享 | Kotlin | Dart | JS / TS |
-| 默认视觉 | ✅ HeroUI Native 打底 + iOS 26 平台控件，四端一致，71 个组件 | Material 3 | Material；Cupertino 是二等公民 | 无 |
-| 设计一致性 | ✅ Token 由 22 项 CI 检查强制 | 无 | 可主题化，不强制 | 无 |
-| HarmonyOS | ✅ 官方目标平台 | 无 | 社区分支 | 华为维护的分支 |
-| 生态与成熟度 | 小 · beta6（KuiklyUI 在腾讯产线承载 5 亿 DAU） | 中 | **大 · 2017 起** | **极大 · 2015 起** |
+| | GearUI Kit | Flutter | React Native |
+|---|---|---|---|
+| 渲染 | ✅ 全部是真实原生视图 | 自带引擎，全平台画布 | 真实原生视图 |
+| 原生控件：输入法、自动填充、辅助功能、文本选择 | ✅ 系统自带 | 全部重实现；原生视图要「嵌」进去 | 系统自带 |
+| 跟随系统设计升级（iOS 26） | ✅ 系统发布当天即得 | 等框架重画 | 系统发布当天即得 |
+| 性能 | ✅ 首屏 122ms vs 原生 125ms · SDK 300KB / 1.2MB ¹ | 引擎，MB 级 | JS 引擎 + bundle |
+| 平台调试工具 | ✅ 每个视图可见、可归因；Android 上就是原生天花板 | 黑盒 FlutterView，只能 DevTools | 可见，但要对两条栈 |
+| 语言 | Kotlin，与 Android 团队和 JVM 后端共享 | Dart | JS / TS |
+| 默认视觉 | ✅ 以 iOS 为准的设计系统，四端一致，71 个组件 | Material；Cupertino 是二等公民 | 无 |
+| 设计一致性 | ✅ Token 由 22 项 CI 检查强制 | 可主题化，不强制 | 无 |
+| HarmonyOS | ✅ 官方目标平台 | 社区分支 | 华为维护的分支 |
+| 生态与成熟度 | 小 · beta7（KuiklyUI 在腾讯产线承载 5 亿 DAU） | **大 · 2017 起** | **极大 · 2015 起** |
 
 ¹ 腾讯官方在鸿蒙上的实测，华为 Mate 60，复杂 Feed 流场景——[出处](https://news.qq.com/rain/a/20250603A05YV000)。SDK 体积来自 [KuiklyUI README](https://github.com/Tencent-TDS/KuiklyUI)。
 

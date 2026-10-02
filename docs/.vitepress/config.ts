@@ -35,7 +35,7 @@ const enKitSidebar: DefaultTheme.SidebarItem[] = [
     text: 'Introduction',
     items: [
       { text: 'What is GearUI Kit', link: '/gearui-kit/' },
-      { text: 'Compared with Flutter, RN and KMP', link: '/gearui-kit/compare' },
+      { text: 'Compared with Flutter and RN', link: '/gearui-kit/compare' },
       { text: 'Getting started', link: '/gearui-kit/guide/getting-started' },
       { text: 'Platforms', link: '/gearui-kit/guide/platforms' },
     ],
@@ -80,7 +80,7 @@ const zhKitSidebar: DefaultTheme.SidebarItem[] = [
     text: '介绍',
     items: [
       { text: 'GearUI Kit 是什么', link: '/zh-Hans/gearui-kit/' },
-      { text: '与 Flutter、RN、KMP 对比', link: '/zh-Hans/gearui-kit/compare' },
+      { text: '与 Flutter、RN 对比', link: '/zh-Hans/gearui-kit/compare' },
       { text: '快速开始', link: '/zh-Hans/gearui-kit/guide/getting-started' },
       { text: '平台支持', link: '/zh-Hans/gearui-kit/guide/platforms' },
     ],

@@ -1,16 +1,15 @@
 # 主题与 Token
 
-GearUI Kit 是 **token 驱动**的：**HeroUI Native 是底线，平台说了算的地方跟 iOS**。组件自身不携带任何颜色或尺寸；它们从具名标度里读值，而库的 CI 会让任何写字面量的组件失败。这就是为什么改一次主题所有页面同时换皮，也是为什么四十个组件不会漂成四十种略微不同的圆角。
+GearUI Kit 是 **token 驱动**的：**自己的标度是底线，平台说了算的地方跟 iOS**。组件自身不携带任何颜色或尺寸；它们从具名标度里读值，而库的 CI 会让任何写字面量的组件失败。这就是为什么改一次主题所有页面同时换皮，也是为什么四十个组件不会漂成四十种略微不同的圆角。
 
 ## 数值从哪里来
 
 每个控件数值都遵循一条写明的规则：
 
-- **控件内部**——按钮、输入框、Tabs、菜单、对话框卡片、Popover、圆角标度——取 HeroUI Native。
 - **平台标志性控件与列表节奏**——开关、列表行高、分组卡片、分隔线——取当前 iOS 版本，在模拟器上实测而不是凭记忆（目前是 iOS 26.2：开关 63×28、行高 52pt、卡片内缩 20pt）。
-- **两边都没有**——GearUI 自定，并写明理由。
+- **其余一切**——控件内部（按钮、输入框、Tabs、菜单、对话框卡片、Popover）与圆角标度——用 GearUI Kit 自己的标度，并写明理由。
 
-每个控件 token 都在源文件里记录这个决定：两边的参考值、选了哪边、为什么。CI 会拒绝数值偏离所选来源的 token，也拒绝没有来源的新 token。完整对照表见 [COMPONENT_METRICS.zh-Hans.md](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md)；规则本身见 [VISUAL_SPEC.zh-Hans.md §2](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#2-数值来源)。
+每个控件 token 都在源文件里记录这个决定：取值、来源、为什么。CI 会拒绝数值偏离来源的 token，也拒绝没有来源的新 token。完整对照表见 [COMPONENT_METRICS.zh-Hans.md](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md)；规则本身见 [VISUAL_SPEC.zh-Hans.md §2](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#2-数值来源)。
 
 ## 颜色——`Theme.colors`
 
@@ -73,7 +72,7 @@ App(
 
 ### 圆角——`Theme.shapes.*`
 
-采用 HeroUI Native 的标度。`Theme.shapes` 给 `Shape` 实例用于 `Modifier.clip`；它是一条主题轴，品牌可以整体换成直角预设而不动组件。
+采用 GearUI Kit 自己的标度。`Theme.shapes` 给 `Shape` 实例用于 `Modifier.clip`；它是一条主题轴，品牌可以整体换成直角预设而不动组件。
 
 | `none` | `sm` | `md` | `lg` | `controlLarge` | `xl` | `full` |
 | --- | --- | --- | --- | --- | --- | --- |

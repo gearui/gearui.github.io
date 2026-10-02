@@ -38,20 +38,20 @@ commonMain.dependencies {
 
 ## How it compares
 
-Nobody has heard of GearUI Kit. Everybody has shipped with at least one of the columns to its right, so the honest way to say what this stack is good at is to put it beside them. Each row is a real difference. ✅ marks where this stack is clearly ahead; the last row is where it is clearly behind. [The full comparison](/gearui-kit/compare) has the reasoning, the pain points each layer removes, the tooling story, and a source for every number.
+Nobody has heard of GearUI Kit. Everybody has shipped with Flutter or React Native, so the honest way to say what GearUI Kit is good at is to put it beside them. Each row is a real difference. ✅ marks where GearUI Kit is clearly ahead; the last row is where it is clearly behind. [The full comparison](/gearui-kit/compare) has the reasoning, the pain points each layer removes, the tooling story, and a source for every number.
 
-| | GearUI Kit + KuiklyUI + KMP | Plain KMP (Compose MP) | Flutter | React Native |
-|---|---|---|---|---|
-| Rendering | ✅ Real native views, everywhere | Native on Android; canvas on iOS | Its own engine, canvas everywhere | Real native views |
-| Native controls — IME, autofill, accessibility, text selection | ✅ The system's own | Reimplemented on iOS | Reimplemented; a native view must be *embedded* | The system's own |
-| Follows OS design updates (iOS 26) | ✅ The day the OS ships | Waits for a repaint on iOS | Waits for the framework to repaint | The day the OS ships |
-| Performance | ✅ First screen 122 ms vs native 125 ms · SDK 300 KB / 1.2 MB ¹ | Skiko | Engine, MB-scale | JS engine + bundle |
-| Platform debugging tools | ✅ Every view visible and attributable; on Android, the native ceiling | Visible on Android, opaque on iOS | Opaque FlutterView; DevTools only | Visible; two stacks to correlate |
-| Language | Kotlin, shared with the Android team and a JVM backend | Kotlin | Dart | JS / TS |
-| Default look | ✅ HeroUI Native floor + iOS 26 platform controls, 71 components | Material 3 | Material; Cupertino is second-class | None |
-| Design consistency | ✅ Tokens enforced by 22 CI checks | None | Themeable, not enforced | None |
-| HarmonyOS | ✅ First-class target | No | Community fork | Huawei-maintained fork |
-| Ecosystem and maturity | Small · beta6 (KuiklyUI runs Tencent products at 500 M DAU) | Medium | **Large · since 2017** | **Very large · since 2015** |
+| | GearUI Kit | Flutter | React Native |
+|---|---|---|---|
+| Rendering | ✅ Real native views, everywhere | Its own engine, canvas everywhere | Real native views |
+| Native controls — IME, autofill, accessibility, text selection | ✅ The system's own | Reimplemented; a native view must be *embedded* | The system's own |
+| Follows OS design updates (iOS 26) | ✅ The day the OS ships | Waits for the framework to repaint | The day the OS ships |
+| Performance | ✅ First screen 122 ms vs native 125 ms · SDK 300 KB / 1.2 MB ¹ | Engine, MB-scale | JS engine + bundle |
+| Platform debugging tools | ✅ Every view visible and attributable; on Android, the native ceiling | Opaque FlutterView; DevTools only | Visible; two stacks to correlate |
+| Language | Kotlin, shared with the Android team and a JVM backend | Dart | JS / TS |
+| Default look | ✅ An iOS-led design system on every platform, 71 components | Material; Cupertino is second-class | None |
+| Design consistency | ✅ Tokens enforced by 22 CI checks | Themeable, not enforced | None |
+| HarmonyOS | ✅ First-class target | Community fork | Huawei-maintained fork |
+| Ecosystem and maturity | Small · beta7 (KuiklyUI runs Tencent products at 500 M DAU) | **Large · since 2017** | **Very large · since 2015** |
 
 ¹ Tencent's own measurement on HarmonyOS, Huawei Mate 60, complex feed scenario — [source](https://news.qq.com/rain/a/20250603A05YV000). SDK sizes from the [KuiklyUI README](https://github.com/Tencent-TDS/KuiklyUI).
 

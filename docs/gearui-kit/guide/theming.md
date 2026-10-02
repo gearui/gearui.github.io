@@ -1,16 +1,15 @@
 # Theming & tokens
 
-GearUI Kit is **token-driven, with HeroUI Native as the floor and iOS where the platform decides**. Components never carry a colour or a size of their own; they read named values from scales, and the library's CI fails any component that writes a literal instead. That is what makes a theme change re-skin every screen at once, and what keeps forty components from drifting into forty slightly different corner radii.
+GearUI Kit is **token-driven: its own scales are the floor, and iOS rules where the platform decides**. Components never carry a colour or a size of their own; they read named values from scales, and the library's CI fails any component that writes a literal instead. That is what makes a theme change re-skin every screen at once, and what keeps forty components from drifting into forty slightly different corner radii.
 
 ## Where the values come from
 
 Every control value follows one written rule:
 
-- **Inside a control** — button, field, tabs, menu, dialog card, popover, the radius scale — HeroUI Native.
 - **Platform-signature controls and list rhythm** — switch, list row height, grouped cards, separators — the current iOS release, measured on the simulator rather than remembered (iOS 26.2 today: a 63×28 switch, 52pt rows, 20pt card inset).
-- **Neither has a value** — GearUI's own, with the reason written down.
+- **Everything else** — inside a control (button, field, tabs, menu, dialog card, popover) and the radius scale — GearUI Kit's own scales, with the reason written down.
 
-Each control token carries that decision in its source: both reference values, the side chosen and why. CI rejects a token whose value drifts from its chosen side, and a new token without a source. The full table is [COMPONENT_METRICS.md](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.md); the rule itself is [VISUAL_SPEC.md §2](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#2-where-values-come-from).
+Each control token carries that decision in its source: the value, where it comes from and why. CI rejects a token whose value drifts from its source, and a new token without one. The full table is [COMPONENT_METRICS.md](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.md); the rule itself is [VISUAL_SPEC.md §2](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.md#2-where-values-come-from).
 
 ## Colours — `Theme.colors`
 
@@ -73,7 +72,7 @@ Everything measured in `dp` comes from one of these. Two of them share numbers w
 
 ### Radius — `Theme.shapes.*`
 
-HeroUI Native's scale. `Theme.shapes` gives `Shape` instances for `Modifier.clip`, and because it is a theme axis a brand can swap it for a square preset without touching components.
+GearUI Kit's own scale. `Theme.shapes` gives `Shape` instances for `Modifier.clip`, and because it is a theme axis a brand can swap it for a square preset without touching components.
 
 | `none` | `sm` | `md` | `lg` | `controlLarge` | `xl` | `full` |
 | --- | --- | --- | --- | --- | --- | --- |
