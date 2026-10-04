@@ -62,7 +62,7 @@ KuiklyUI 是渲染器。它不提供一个第一天就像成品的组件库，�
 |---|---|---|
 | 默认就像 iOS | Flutter 默认 Material，Cupertino 是画出来的、不完整的仿品；React Native 什么都不给 | GearUI Kit 自己的 token 标度是底线，平台标志性控件（开关、列表行、分组卡片、分隔线）取 iOS 26 模拟器实测值，四端一套设计语言，71 个组件。每个控件数值都记录了取自哪一方、为什么——[取值规则](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#2-数值来源)、[逐 token 对照表](https://github.com/gearui/gearui-kit/blob/main/docs/COMPONENT_METRICS.zh-Hans.md) |
 | 十个人提交半年后还像一个产品 | 靠自觉 | 六条 token 标度、**20 个护栏脚本**加一项来源校验：组件代码里禁字面量，圆角只能来自标度——[护栏本身](https://github.com/gearui/gearui-kit/tree/main/scripts/ci) |
-| 图标 | 字体 glyph，或各 App 自己导入 | Phosphor 以图片资源内置，沿用 Phosphor 的命名，不是字体 |
+| 图标 | 字体 glyph，或各 App 自己导入 | 全部 Phosphor 图标（regular 与 fill）以带类型的矢量内置；只打包代码里用到的图标 |
 | 毛玻璃这类平台效果 | 各 App 自己做 | 材质层带**降级规则**：模糊跑不了的地方退成不透明面，绝不在任意内容上留一层半透明烂片。我们还[公开了渲染器模糊能力的缺口](https://github.com/gearui/gearui-kit/blob/main/docs/VISUAL_SPEC.zh-Hans.md#5-阴影边框与材质)——把自己依赖层的缺口公开，是被信任的一部分 |
 
 ### 运行时管线

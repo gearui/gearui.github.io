@@ -45,6 +45,7 @@ const enKitSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       { text: 'App root & runtime', link: '/gearui-kit/guide/app-root' },
       { text: 'Theming & tokens', link: '/gearui-kit/guide/theming' },
+      { text: 'Icons', link: '/gearui-kit/guide/icons' },
       { text: 'Internationalisation', link: '/gearui-kit/guide/i18n' },
       { text: 'Components', link: '/gearui-kit/guide/components' },
     ],
@@ -90,6 +91,7 @@ const zhKitSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       { text: 'App 根节点与运行时', link: '/zh-Hans/gearui-kit/guide/app-root' },
       { text: '主题与 Token', link: '/zh-Hans/gearui-kit/guide/theming' },
+      { text: '图标', link: '/zh-Hans/gearui-kit/guide/icons' },
       { text: '国际化', link: '/zh-Hans/gearui-kit/guide/i18n' },
       { text: '组件', link: '/zh-Hans/gearui-kit/guide/components' },
     ],

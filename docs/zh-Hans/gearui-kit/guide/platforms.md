@@ -11,7 +11,7 @@
 
 两者都通过 KuiklyUI 的原生渲染器渲染——是真正的平台视图，不是画布。发布产物是 `gearui-kit-android`（AAR）和三个 iOS klib（`iosarm64` / `iossimulatorarm64` / `iosx64`）；Gradle 从根坐标自动挑。
 
-iOS 的 sample 是 CocoaPods 宿主。照抄之前有个坑要知道：`pod install` 必须在 Gradle 构建出 framework **之后**跑，否则 CocoaPods 看到的是空资源目录，会静默删掉拷贝阶段——App 照常构建、照常运行，只是所有图标都是空白方块。仓库里有一条 CI 检查专门盯这个。
+iOS 的 sample 是 CocoaPods 宿主。照抄之前有个坑要知道：`pod install` 必须在 Gradle 构建出 framework **之后**跑，否则 CocoaPods 看到的是空资源目录，会静默删掉拷贝阶段——App 照常构建、照常运行，只是 App 自带的图片全都缺失。仓库里有一条 CI 检查专门盯这个。GearUI 的图标是代码，不受它影响。
 
 ## Web
 

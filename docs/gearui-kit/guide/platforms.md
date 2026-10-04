@@ -11,7 +11,7 @@
 
 Both render through KuiklyUI's native renderers — real platform views, not a canvas. The published artifacts are `gearui-kit-android` (AAR) and three iOS klibs (`iosarm64`, `iossimulatorarm64`, `iosx64`); Gradle picks the right one from the root coordinate.
 
-On iOS the sample is a CocoaPods host. One trap worth knowing before you copy it: `pod install` must run **after** a Gradle build has produced the framework, otherwise CocoaPods sees an empty resources directory and silently drops the copy phase — the app builds and runs, and every icon is a blank box. The repo has a CI check for exactly this.
+On iOS the sample is a CocoaPods host. One trap worth knowing before you copy it: `pod install` must run **after** a Gradle build has produced the framework, otherwise CocoaPods sees an empty resources directory and silently drops the copy phase — the app builds and runs, and every image of the app's own is missing. The repo has a CI check for exactly this. GearUI's icons are code and do not depend on it.
 
 ## Web
 
