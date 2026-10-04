@@ -26,7 +26,7 @@ titleTemplate: Kotlin Multiplatform UI component library
 
 ```kotlin
 commonMain.dependencies {
-    implementation("com.gearui:gearui-kit:1.0.0-beta7")
+    implementation("com.gearui:gearui-kit:1.0.0-beta8")
 }
 ```
 
@@ -51,7 +51,7 @@ Nobody has heard of GearUI Kit. Everybody has shipped with Flutter or React Nati
 | Default look | ✅ An iOS-led design system on every platform, 71 components | Material; Cupertino is second-class | None |
 | Design consistency | ✅ Tokens enforced by 22 CI checks | Themeable, not enforced | None |
 | HarmonyOS | ✅ First-class target | Community fork | Huawei-maintained fork |
-| Ecosystem and maturity | Small · beta7 (KuiklyUI runs Tencent products at 500 M DAU) | **Large · since 2017** | **Very large · since 2015** |
+| Ecosystem and maturity | Small · beta8 (KuiklyUI runs Tencent products at 500 M DAU) | **Large · since 2017** | **Very large · since 2015** |
 
 ¹ Tencent's own measurement on HarmonyOS, Huawei Mate 60, complex feed scenario — [source](https://news.qq.com/rain/a/20250603A05YV000). SDK sizes from the [KuiklyUI README](https://github.com/Tencent-TDS/KuiklyUI).
 

@@ -2,7 +2,7 @@
 
 # Components
 
-GearUI Kit ships **71 components** in 6 categories. Every one of them has a demo page in the sample app; the names below are the composable names you import from `com.gearui.components.*`.
+GearUI Kit ships **83 components** in 6 categories. Every one of them has a demo page in the sample app; the names below are the composable names you import from `com.gearui.components.*`.
 
 This page is generated from the sample's component registry, so it cannot disagree with what the sample shows.
 
@@ -20,12 +20,13 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Badge` | Message count indicator |
 | `Divider` | Content separator |
 
-## Form (19)
+## Form (23)
 
 | Component | Purpose |
 | --- | --- |
 | `Input` | Text input |
 | `Checkbox` | Multiple selection |
+| `AgreementCheckbox` | Terms and privacy consent |
 | `Radio` | Single selection |
 | `InputOTP` | One-time code input |
 | `ComboBox` | Filterable suggestions |
@@ -43,8 +44,11 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Upload` | File upload |
 | `Form` | Form container |
 | `Cascader` | Cascade selector |
+| `ListBox` | Single or multiple choice shown in the page |
+| `TypedForm` | Typed fields, async checks, server errors |
+| `ColorPicker` | Swatches, color plane and hex entry |
 
-## Navigation (6)
+## Navigation (8)
 
 | Component | Purpose |
 | --- | --- |
@@ -53,9 +57,11 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Tabs` | Content switching |
 | `Drawer` | Slide drawer |
 | `Steps` | Step indicator |
+| `IndexBar` | Alphabet index |
 | `Segmented` | Segmented control |
+| `Toolbar` | Related actions that wrap on narrow screens |
 
-## Data display (16)
+## Data display (21)
 
 | Component | Purpose |
 | --- | --- |
@@ -74,7 +80,12 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Skeleton` | Loading placeholder |
 | `Timeline` | Timeline display |
 | `Calendar` | Calendar display |
+| `Format` | Compact numbers, relative time, lunar |
 | `Watermark` | Page watermark |
+| `Meter` | A measurement within known bounds |
+| `User` | Avatar, name and description |
+| `Code` | Inline code and copyable snippets |
+| `Kbd` | Web and external-keyboard shortcut hint |
 
 ## Feedback (15)
 
@@ -96,7 +107,7 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Result` | Operation result |
 | `Tour` | Feature guide |
 
-## Layout (6)
+## Layout (7)
 
 | Component | Purpose |
 | --- | --- |
@@ -104,6 +115,7 @@ This page is generated from the sample's component registry, so it cannot disagr
 | `Swiper` | Content carousel |
 | `SearchBar` | Search input |
 | `PullRefresh` | Pull to refresh a list |
+| `LoadMore` | Load the next page of a list |
 | `BottomSheet` | Bottom sheet |
 | `BackTop` | Back to top |
 

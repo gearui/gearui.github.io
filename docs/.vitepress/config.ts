@@ -14,7 +14,7 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 
 const GITHUB_ORG = 'https://github.com/gearui'
 const KIT_REPO = `${GITHUB_ORG}/gearui-kit`
-const KIT_VERSION = '1.0.0-beta7'
+const KIT_VERSION = '1.0.0-beta8'
 
 // ---------------------------------------------------------------- English
 

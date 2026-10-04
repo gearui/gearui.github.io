@@ -26,7 +26,7 @@ titleTemplate: Kotlin Multiplatform UI 组件库
 
 ```kotlin
 commonMain.dependencies {
-    implementation("com.gearui:gearui-kit:1.0.0-beta7")
+    implementation("com.gearui:gearui-kit:1.0.0-beta8")
 }
 ```
 
@@ -51,7 +51,7 @@ commonMain.dependencies {
 | 默认视觉 | ✅ 以 iOS 为准的设计系统，四端一致，71 个组件 | Material；Cupertino 是二等公民 | 无 |
 | 设计一致性 | ✅ Token 由 22 项 CI 检查强制 | 可主题化，不强制 | 无 |
 | HarmonyOS | ✅ 官方目标平台 | 社区分支 | 华为维护的分支 |
-| 生态与成熟度 | 小 · beta7（KuiklyUI 在腾讯产线承载 5 亿 DAU） | **大 · 2017 起** | **极大 · 2015 起** |
+| 生态与成熟度 | 小 · beta8（KuiklyUI 在腾讯产线承载 5 亿 DAU） | **大 · 2017 起** | **极大 · 2015 起** |
 
 ¹ 腾讯官方在鸿蒙上的实测，华为 Mate 60，复杂 Feed 流场景——[出处](https://news.qq.com/rain/a/20250603A05YV000)。SDK 体积来自 [KuiklyUI README](https://github.com/Tencent-TDS/KuiklyUI)。
 
