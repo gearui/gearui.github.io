@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | Android | ✅ | ✅ | ✅ |
 | iOS | ✅ | ✅ | ✅ |
-| Web (H5) | ✅ | ✅ 76 个演示中 75 个 | ✅ |
+| Web (H5) | ✅ | ✅ | ✅ |
 | 鸿蒙 | ✅ | ✅ 可构建 | — |
 
 ## Android 与 iOS
@@ -15,7 +15,7 @@ iOS 的 sample 是 CocoaPods 宿主。照抄之前有个坑要知道：`pod inst
 
 ## Web
 
-Web 目标通过 KuiklyUI 的 web 渲染器（`core-render-web`）运行。sample 的 `jsApp` 宿主可用，76 个演示中 75 个正常渲染与交互；失败的那个是 `Table`，报的是 Kotlin/JS 部分链接错误，出在 sample 自身的演示文件而不是组件本身。根因尚未查实。
+Web 目标通过 KuiklyUI 的 web 渲染器（`core-render-web`）运行。sample 的 `jsApp` 宿主能运行全部示例页：每一页在浅色和深色下都能正常加载、滚动、在手机与桌面宽度之间切换而不报错，并且在 320 宽的屏幕上显示完整。
 
 宿主不能带 UMD wrapper——sample 的 `webpack.config.d/output.js` 把它关掉了。不关的话 kotlin-webpack 的 UMD 尾部会整体替换 `window.com`，渲染桥就没了；症状是 `callNative is not defined`，看起来像缺依赖，其实不是。
 

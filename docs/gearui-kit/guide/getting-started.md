@@ -27,7 +27,7 @@ repositories {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("com.gearui:gearui-kit:1.0.0-beta6")
+            implementation("com.gearui:gearui-kit:1.0.0-beta7")
         }
     }
 }

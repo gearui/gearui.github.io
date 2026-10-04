@@ -26,7 +26,7 @@ titleTemplate: Kotlin Multiplatform UI 组件库
 
 ```kotlin
 commonMain.dependencies {
-    implementation("com.gearui:gearui-kit:1.0.0-beta6")
+    implementation("com.gearui:gearui-kit:1.0.0-beta7")
 }
 ```
 

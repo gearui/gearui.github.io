@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | Android | ✅ | ✅ | ✅ |
 | iOS | ✅ | ✅ | ✅ |
-| Web (H5) | ✅ | ✅ 75 of 76 demos | ✅ |
+| Web (H5) | ✅ | ✅ | ✅ |
 | HarmonyOS | ✅ | ✅ builds | — |
 
 ## Android and iOS
@@ -15,7 +15,7 @@ On iOS the sample is a CocoaPods host. One trap worth knowing before you copy it
 
 ## Web
 
-The Web target runs through KuiklyUI's web renderer (`core-render-web`). The sample's `jsApp` host works and 75 of 76 demos render and respond; the one that fails is `Table`, on a Kotlin/JS partial-linkage error in the sample's own demo file rather than in the component. Root cause is open.
+The Web target runs through KuiklyUI's web renderer (`core-render-web`). The sample's `jsApp` host runs every sample page: each one loads, scrolls and resizes between a phone and a desktop width without errors, in light and dark, and fits a 320-wide screen.
 
 The host must not carry a UMD wrapper — the sample's `webpack.config.d/output.js` disables it. Without that, kotlin-webpack's UMD tail replaces `window.com` and the render bridge disappears; the symptom is `callNative is not defined`, which looks like a missing dependency and is not.
 
