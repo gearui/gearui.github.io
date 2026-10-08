@@ -13,6 +13,8 @@
 
 iOS 的 sample 是 CocoaPods 宿主。照抄之前有个坑要知道：`pod install` 必须在 Gradle 构建出 framework **之后**跑，否则 CocoaPods 看到的是空资源目录，会静默删掉拷贝阶段——App 照常构建、照常运行，只是 App 自带的图片全都缺失。仓库里有一条 CI 检查专门盯这个。GearUI 的图标是代码，不受它影响。
 
+第二个：宿主的 `Info.plist` 要把 `CADisableMinimumFrameDurationOnPhone` 设为 `YES`，和 sample 一样。不设的话，iPhone 在 120 Hz 的 ProMotion 屏上会把 App 自己驱动的动画限在 60 Hz，而系统滚动是 120 Hz，于是 GearUI 驱动的每个动画——页面滑入、弹层、开关——和周围的滚动一比都显得一顿一顿。其他不受影响：画面不动时不会多画帧。
+
 ## Web
 
 Web 目标通过 KuiklyUI 的 web 渲染器（`core-render-web`）运行。sample 的 `jsApp` 宿主能运行全部示例页：每一页在浅色和深色下都能正常加载、滚动、在手机与桌面宽度之间切换而不报错，并且在 320 宽的屏幕上显示完整。

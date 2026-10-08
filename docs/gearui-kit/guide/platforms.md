@@ -13,6 +13,8 @@ Both render through KuiklyUI's native renderers — real platform views, not a c
 
 On iOS the sample is a CocoaPods host. One trap worth knowing before you copy it: `pod install` must run **after** a Gradle build has produced the framework, otherwise CocoaPods sees an empty resources directory and silently drops the copy phase — the app builds and runs, and every image of the app's own is missing. The repo has a CI check for exactly this. GearUI's icons are code and do not depend on it.
 
+A second: set `CADisableMinimumFrameDurationOnPhone` to `YES` in the host's `Info.plist`, as the sample does. Without it an iPhone holds the app's own animations to 60 Hz on a 120 Hz ProMotion screen, while system scrolling runs at 120 Hz, so every animation GearUI drives — a page sliding in, a sheet, a switch — looks stepped next to the scrolling around it. Nothing else changes: an app with nothing moving still draws no extra frames.
+
 ## Web
 
 The Web target runs through KuiklyUI's web renderer (`core-render-web`). The sample's `jsApp` host runs every sample page: each one loads, scrolls and resizes between a phone and a desktop width without errors, in light and dark, and fits a 320-wide screen.
