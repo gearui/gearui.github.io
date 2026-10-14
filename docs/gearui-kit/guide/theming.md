@@ -82,9 +82,9 @@ Small controls and chips sit at `sm`; fields at `md`; buttons and cards at `lg`;
 
 `Radius.*` gives the same steps as `Dp` for code that needs a number rather than a `Shape`; both are read from the same generated geometry.
 
-### Elevation — `Elevation.*`
+### Elevation — `Theme.elevation.*`
 
-Surfaces are flat and content-first: depth comes from tokenised shadows and separators, not chrome. Fields are borderless with a soft field shadow (on a card or sheet, pass `variant = FieldVariant.SECONDARY` for the filled look; every field-family component takes it); grouped lists separate rows with `separator` lines that start at the text, the way iOS does. A strong shadow means "this floats above the page", so only overlays use the steps below.
+Surfaces are flat and content-first: depth comes from tokenised shadows and separators, not chrome. Fields are borderless with a soft field shadow (on a card or sheet, pass `variant = FieldVariant.SECONDARY` for the outlined look — the field colour with a hairline border; every field-family component takes it); grouped lists separate rows with `separator` lines that start at the text, the way iOS does. A strong shadow means "this floats above the page", so only overlays use the steps below.
 
 | `none` | `raised` | `floating` | `modal` |
 | --- | --- | --- | --- |
@@ -93,7 +93,7 @@ Surfaces are flat and content-first: depth comes from tokenised shadows and sepa
 `raised` = controls attached to content and light anchored overlays (Popover, Snackbar). `floating` = detached panels (Select dropdown, Notification). `modal` = layers that take focus (Dialog).
 
 ::: warning Do not use `Spacing.*` as an elevation
-`Spacing.xs` and `Elevation.raised` are both 4dp today. They are different axes; writing `Spacing.xs` where a shadow depth is expected compiles and looks right, and breaks the day the spacing scale is retuned. The CI guard rejects it for that reason.
+`Spacing.xs` and `Theme.elevation.raised` are both 4dp today. They are different axes; writing `Spacing.xs` where a shadow depth is expected compiles and looks right, and breaks the day the spacing scale is retuned. The CI guard rejects it for that reason.
 :::
 
 ### Border width — `BorderWidth.*`

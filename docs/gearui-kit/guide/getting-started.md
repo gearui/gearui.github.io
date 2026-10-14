@@ -109,7 +109,7 @@ fun MainPageContent() {
 Three habits that the library's own CI enforces on itself and that you should carry into your app:
 
 1. **`val colors = Theme.colors` first** — colours are read from the theme, never written as `Color(0x…)`.
-2. **Sizes come from scales** — `Spacing.lg`, `Theme.shapes.md`, `IconSizes.Default.md`, `Elevation.raised`. Not `16.dp`.
+2. **Sizes come from scales** — `Spacing.lg`, `Theme.shapes.md`, `IconSizes.Default.md`, `Theme.elevation.raised`. Not `16.dp`.
 3. **`PageScaffold` is the page root** — it is what consumes safe area. Do not read `safeAreaInsets` by hand.
 
 ## Run the sample

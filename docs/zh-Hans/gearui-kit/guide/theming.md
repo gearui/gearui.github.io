@@ -82,9 +82,9 @@ App(
 
 `Radius.*` 以 `Dp` 形式给出同一组数值，供需要数字而不是 `Shape` 的代码使用；两者读自同一份生成的几何 token。
 
-### 阴影——`Elevation.*`
+### 阴影——`Theme.elevation.*`
 
-表面扁平、内容优先：层次来自 token 化的阴影与分隔线，而不是边框装饰。输入框默认无边框、带一层柔和的输入框阴影（放在卡片或面板上时传 `variant = FieldVariant.SECONDARY` 得到填充样式；输入框家族的每个组件都有这个参数）；分组列表用从文字处起始的 `separator` 分隔线分隔各行，和 iOS 一致。明显的阴影意味着「这个浮在页面之上」，所以只有浮层使用下面这几档。
+表面扁平、内容优先：层次来自 token 化的阴影与分隔线，而不是边框装饰。输入框默认无边框、带一层柔和的输入框阴影（放在卡片或面板上时传 `variant = FieldVariant.SECONDARY` 得到描边样式——字段底色加一圈细边框；输入框家族的每个组件都有这个参数）；分组列表用从文字处起始的 `separator` 分隔线分隔各行，和 iOS 一致。明显的阴影意味着「这个浮在页面之上」，所以只有浮层使用下面这几档。
 
 | `none` | `raised` | `floating` | `modal` |
 | --- | --- | --- | --- |
@@ -93,7 +93,7 @@ App(
 `raised` = 依附于内容的控件与贴着触发器的轻浮层（Popover、Snackbar）。`floating` = 脱离触发器的面板（Select 下拉、Notification）。`modal` = 抢焦点的层（Dialog）。
 
 ::: warning 不要拿 `Spacing.*` 当阴影
-`Spacing.xs` 与 `Elevation.raised` 今天都是 4dp。它们是不同的轴；在该写阴影深度的地方写 `Spacing.xs`，编译过、看着也对，等间距标度一调就坏。CI 护栏正因如此拒绝它。
+`Spacing.xs` 与 `Theme.elevation.raised` 今天都是 4dp。它们是不同的轴；在该写阴影深度的地方写 `Spacing.xs`，编译过、看着也对，等间距标度一调就坏。CI 护栏正因如此拒绝它。
 :::
 
 ### 描边宽度——`BorderWidth.*`

@@ -109,7 +109,7 @@ fun MainPageContent() {
 三个习惯——库自己的 CI 对自己强制执行，也建议带进你的 App：
 
 1. **第一行 `val colors = Theme.colors`**——颜色从主题读，永远不写 `Color(0x…)`。
-2. **尺寸来自标度**——`Spacing.lg`、`Theme.shapes.md`、`IconSizes.Default.md`、`Elevation.raised`。不写 `16.dp`。
+2. **尺寸来自标度**——`Spacing.lg`、`Theme.shapes.md`、`IconSizes.Default.md`、`Theme.elevation.raised`。不写 `16.dp`。
 3. **`PageScaffold` 是页面根**——安全区由它消费。别手读 `safeAreaInsets`。
 
 ## 运行 sample
