@@ -74,11 +74,13 @@ Everything measured in `dp` comes from one of these. Two of them share numbers w
 
 GearUI Kit's own scale. `Theme.shapes` gives `Shape` instances for `Modifier.clip`, and because it is a theme axis a brand can swap it for a square preset without touching components.
 
-| `none` | `sm` | `md` | `lg` | `controlLarge` | `xl` | `full` |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | 8 | 12 | 14 | 16 | 24 | 9999 (pill) |
+| `none` | `sm` | `md` | `lg` | `controlLarge` | `xl` | `full` | `sheet` |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | 8 | 12 | 14 | 16 | 24 | 9999 (pill) | 32, top corners |
 
 Small controls and chips sit at `sm`; fields at `md`; buttons and cards at `lg`; large controls at `controlLarge`; dialogs and overlay surfaces at `xl`. Buttons and tabs that are meant to be capsules use `full`.
+
+`sheet` is the edge-anchored overlay shape — bottom sheets and action sheets round only the corners facing the content (32 by default). Dialogs and menus use `xl`. A square-corner theme sets all of these, `full` and `sheet` included, so every control and overlay squares at once.
 
 `Radius.*` gives the same steps as `Dp` for code that needs a number rather than a `Shape`; both are read from the same generated geometry.
 
