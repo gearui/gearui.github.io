@@ -8,7 +8,7 @@ GearUI Kit is a Kotlin Multiplatform library. You add one dependency to `commonM
 | --- | --- |
 | Kotlin | 2.1.21 (must match KuiklyUI's) |
 | Compose Multiplatform | 1.7.3 |
-| KuiklyUI | 2.28.0 (`compose:2.28.0-2.1.21`) |
+| KuiklyUI | 2.30.0 (`compose:2.30.0-2.1.21`) |
 | Android | minSdk 21, compileSdk 36 |
 | iOS | 15.0+, arm64 / simulator arm64 / x64 |
 | JS | browser, IR |
@@ -27,7 +27,7 @@ repositories {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("com.gearui:gearui-kit:1.0.0-beta8")
+            implementation("com.gearui:gearui-kit:1.0.0")
         }
     }
 }
