@@ -1,11 +1,23 @@
 # 平台支持
 
-| 平台 | 库 | Sample | CI |
+| 平台 | 最低版本 | 已验证到 | 尚未验收 |
 | --- | --- | --- | --- |
-| Android | ✅ | ✅ | ✅ |
-| iOS | ✅ | ✅ | ✅ |
-| Web (H5) | ✅ | ✅ | ✅ |
-| 鸿蒙 | ✅ | ✅ 可构建 | — |
+| Android | minSdk 21（compileSdk 36） | 真机交互（小米 12 Pro，Android 16）；CI 跑单测与 lint | 低端机性能 |
+| iOS | 15.0 | 模拟器交互（iOS 18.2 与 27.0）；CI 在模拟器上跑 Kotlin 测试 | Kit 本身的真机验收 |
+| Web（H5） | Chromium 内核浏览器 | 示例每个页面在明暗两种主题下加载、滚动、缩放正常（Playwright，Chromium） | 键盘操作与焦点顺序；Safari/WebKit |
+| HarmonyOS | — | 端到端构建通过（Kit、NAPI 胶水、HAP） | 真机或模拟器运行 |
+
+工具链：Kotlin **2.1.21**（必须与 KuiklyUI 一致）、KuiklyUI **2.28.0**、Compose Multiplatform **1.7.3**。
+
+**有限支持（各处说法一致）：**
+
+- **不支持从右到左（RTL）语言。** KuiklyUI 不传递布局方向。
+- **iOS 不跟随系统动态字体。** KuiklyUI 在 iOS 上关闭了字体缩放；Android 的字号设置会跟随。
+- **HarmonyOS 仅到构建级。** 在真机上跑起来之前，界面上的一切都未经验证。
+- **模糊效果默认关闭**，等上游修复四个渲染器差异（见 `docs/VISUAL_SPEC.md` §5）。
+- Android 系统键盘跟随系统的明暗设置，而不是 App 的——平台没有提供设置接口。
+
+**点击区在所有平台都是 44 × 44。** 这是遵循 Apple 规范的有意选择；Android 规范是 48 dp。控件的点击区不会与相邻控件重叠。
 
 ## Android 与 iOS
 
