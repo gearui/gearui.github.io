@@ -160,7 +160,7 @@ export default defineConfig({
         },
         footer: {
           message: 'GearUI Kit 基于 Apache License 2.0 协议发布。',
-          copyright: 'Copyright © 2026 上海博宇信息科技有限公司',
+          copyright: 'Copyright © 2026 上海博予信息技术有限公司',
         },
         docFooter: { prev: '上一页', next: '下一页' },
         outline: { label: '本页目录' },
